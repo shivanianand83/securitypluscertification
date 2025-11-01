@@ -1,0 +1,46 @@
+HIPAA (Health Insurance Portability and Accountability Act) is a U.S. law that protects the privacy and security of individuals’ health information. It sets national standards for handling medical data and applies to healthcare providers, insurers, and their business associates.
+
+🏥 What Is HIPAA?
+HIPAA was enacted in 1996 to improve health insurance portability and reduce fraud and abuse in healthcare. Over time, it evolved to include strict rules for protecting Protected Health Information (PHI)—any identifiable health data like medical records, billing info, or insurance details.
+
+📜 Key HIPAA Rules and Requirements
+HIPAA is structured around several core rules:
+1. Privacy Rule
+• 	Purpose: Regulates how PHI can be used and disclosed.
+• 	Applies to: Healthcare providers, health plans, and clearinghouses (called “covered entities”).
+• 	Requirements:
+• 	Provide patients with a Notice of Privacy Practices.
+• 	Allow patients to access and request corrections to their records.
+• 	Limit disclosures to the “minimum necessary” for a given task.
+2. Security Rule
+• 	Purpose: Sets standards for securing electronic PHI (ePHI).
+• 	Requirements:
+• 	Implement administrative safeguards (e.g., training, policies).
+• 	Use physical safeguards (e.g., locked server rooms).
+• 	Apply technical safeguards (e.g., encryption, access controls).
+3. Breach Notification Rule
+• 	Purpose: Requires notification when PHI is compromised.
+• 	Requirements:
+• 	Notify affected individuals within 60 days.
+• 	Report breaches to the Department of Health and Human Services (HHS).
+• 	Notify the media if the breach affects more than 500 people.
+4. Omnibus Rule
+• 	Purpose: Strengthens privacy protections and expands responsibilities to business associates.
+• 	Requirements:
+• 	Business associates (e.g., cloud providers, billing services) must comply with HIPAA.
+• 	Update contracts to include HIPAA-compliant terms.
+
+✅ Compliance Checklist
+To comply with HIPAA, organizations must:
+• 	Conduct regular risk assessments.
+• 	Train staff on privacy and security practices.
+• 	Maintain audit trails and access logs.
+• 	Encrypt sensitive data.
+• 	Sign Business Associate Agreements (BAAs) with vendors.
+• 	Have an incident response plan for breaches.
+
+⚠️ Penalties for Noncompliance
+Violations can result in:
+• 	Civil fines: Up to $1.9 million per year per violation type.
+• 	Criminal charges: For intentional misuse of PHI.
+• 	Reputational damage: Loss of patient trust and public scrutiny.
