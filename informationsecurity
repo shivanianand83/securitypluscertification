@@ -1,0 +1,17 @@
+What Is Information Security?
+Information Security (Infosec) is all about protecting data from threats like unauthorized access, theft, damage, or attacks. This applies to how data is:
+• 	Stored (e.g., on servers or devices)
+• 	Transferred (e.g., over networks)
+• 	Processed (e.g., by applications or systems)
+To be considered secure, these systems must demonstrate specific properties—most importantly, the CIA Triad.
+
+🧠 The CIA Triad (or AIC)
+This foundational model outlines three essential principles of secure information:
+
+💡 Sometimes it's called AIC to avoid confusion with the U.S. Central Intelligence Agency.
+
+🧾 Beyond CIA: Non-Repudiation
+Another critical concept in secure systems is non-repudiation:
+• 	It ensures that someone cannot deny having performed an action—like sending a message or signing a document.
+• 	Example: A signed will with witnesses provides proof that the signer can't later deny having signed it.
+This is vital for legal, financial, and communication systems where accountability matters.
