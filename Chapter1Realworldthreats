@@ -1,0 +1,21 @@
+The NIST Cybersecurity Framework functions—Identify, Protect, Detect, Respond, and Recover—can be grouped into three strategic levels: proactive (Identify, Protect), reactive (Detect, Respond), and restorative (Recover). Real-world examples show how these levels interact to defend against internal and external threats.
+
+🧭 Three Strategic Levels of Cybersecurity Functions
+1. Top Level: Identify → Protect
+These are proactive functions focused on preparation and prevention.
+• 	Identify: A hospital conducts a risk assessment to catalog patient data systems and evaluate vulnerabilities in its network.
+• 	Protect: A bank installs multi-factor authentication and encrypts customer data to prevent unauthorized access.
+These steps form the foundation of a secure environment, helping organizations understand what needs protection and how to safeguard it.
+
+2. Middle Level: Detect → Respond → Recover
+These are reactive and restorative functions triggered by incidents.
+• 	Detect: A retail company uses intrusion detection systems to spot unusual login attempts on its e-commerce platform.
+• 	Respond: After detecting ransomware, an IT team isolates infected machines and notifies affected users.
+• 	Recover: A manufacturing firm restores operations using clean backups after a cyberattack disrupts its production systems.
+This level ensures that threats are identified quickly, contained effectively, and systems are restored with minimal downtime.
+
+🔄 Internal Threat Flow
+Within the organization, threats move through a cycle:
+• 	Detection of attacks leads to identification of vulnerabilities, which informs protection strategies.
+• 	Response and recovery efforts feed back into protection planning, improving future defenses.
+📌 Example: After a phishing attack, a university updates its email filters and trains staff to recognize suspicious messages—closing the loop from detection to protection.
