@@ -1,0 +1,35 @@
+Overview of Security as a Process
+Security isn't a one-time setup—it's a continuous cycle that involves:
+• 	Assessing requirements: Understanding what needs protection and identifying risks.
+• 	Setting up systems: Implementing tools, policies, and infrastructure to safeguard assets.
+• 	Hardening and monitoring: Strengthening systems against vulnerabilities and continuously watching for threats.
+• 	Responding to attacks: Acting swiftly to contain and mitigate damage during security incidents.
+• 	Deterring attackers: Using visible defenses and policies to discourage malicious activity.
+
+🧠 Core Security Concepts
+To contribute effectively to a security team, you should understand:
+• 	Confidentiality: Ensuring sensitive data is accessible only to authorized users.
+• 	Integrity: Protecting data from unauthorized changes.
+• 	Availability: Making sure systems and data are accessible when needed.
+• 	Risk Management: Identifying, evaluating, and mitigating potential threats.
+• 	Defense in Depth: Using multiple layers of security controls to protect assets.
+
+🛡️ Security Control Types
+Security controls fall into three main categories:
+
+
+📋 Compliance & Frameworks
+Compliance and best practices guide the selection of security controls:
+• 	Regulatory Compliance: Laws like GDPR, HIPAA, or PCI-DSS require specific protections.
+• 	Frameworks: Standards like NIST, ISO/IEC 27001, and CIS Controls help organizations structure their security programs.
+• 	Best Practices: Industry-accepted methods for securing systems and data.
+These frameworks ensure consistency, accountability, and legal adherence across organizations.
+
+🏢 Security Roles & Responsibilities
+Security is implemented differently across organizations, but common roles include:
+• 	CISO (Chief Information Security Officer): Oversees the entire security strategy.
+• 	Security Analysts: Monitor systems and respond to incidents.
+• 	Security Engineers: Build and maintain secure infrastructure.
+• 	Compliance Officers: Ensure adherence to laws and standards.
+• 	IT Departments: Often collaborate with security teams to enforce controls.
+Departments and units tailor their security functions based on size, industry, and risk profile.
