@@ -19,3 +19,12 @@ While NIST is a gold standard, other notable frameworks include:
 - CIS Controls – Prioritized set of actions to defend against cyber threats.
 - COBIT – Governance and management framework for enterprise IT.
 - PCI-DSS – Security standards for organizations handling credit card data.
+he NIST Cybersecurity Framework’s Five Functions—Identify, Protect, Detect, Respond, and Recover—form the backbone of a holistic cybersecurity strategy. They help organizations manage risk, prioritize efforts, and maintain resilience against cyber threats.
+
+🔍 Summary of the Five Functions
+• 	Identify: Establish a deep understanding of organizational assets, business context, and cybersecurity risks. This includes asset management, governance, risk assessment, and supply chain risk strategies.
+• 	Protect: Implement safeguards to ensure service delivery and limit the impact of potential incidents. Key areas include access control, staff training, data security, maintenance, and protective technologies.
+• 	Detect: Enable timely discovery of cybersecurity events through anomaly detection, continuous monitoring, and robust detection processes.
+• 	Respond: Take action during and after a cybersecurity incident. This involves executing response plans, managing communications, conducting analysis, mitigating threats, and applying lessons learned.
+• 	Recover: Restore capabilities and services affected by incidents. Focus areas include recovery planning, strategic improvements, and coordinated communications.
+These functions are designed to be adaptable across industries and help organizations express their cybersecurity posture clearly and effectively.
