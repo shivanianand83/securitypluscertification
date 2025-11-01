@@ -1,0 +1,21 @@
+🔐 What Is a Cybersecurity Framework?
+A Cybersecurity Framework (CSF) is a structured approach to managing and reducing cybersecurity risk. It provides organizations with a set of best practices, standards, and guidelines to protect their information systems. The NIST CSF is one of the most widely adopted models globally, designed to be flexible across industries and scalable for organizations of any size.
+
+🧭 The 5 Core Functions of the NIST Cybersecurity Framework
+These five functions represent the lifecycle of cybersecurity risk management and are intended to guide organizations in building a comprehensive security strategy:
+
+Identify → Protect → Detect → Respond → Recover
+
+Sources: NIST Cybersecurity Framework
+
+🧩 Why It Matters
+- Holistic Coverage: The framework ensures that security isn't just reactive—it’s proactive and resilient.
+- Adaptability: It can be tailored to different industries, regulatory environments, and organizational sizes.
+- Continuous Improvement: Encourages regular updates and refinements based on evolving threats.
+
+🌐 Other Cybersecurity Frameworks
+While NIST is a gold standard, other notable frameworks include:
+- ISO/IEC 27001 – International standard for information security management systems.
+- CIS Controls – Prioritized set of actions to defend against cyber threats.
+- COBIT – Governance and management framework for enterprise IT.
+- PCI-DSS – Security standards for organizations handling credit card data.
