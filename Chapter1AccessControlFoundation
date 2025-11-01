@@ -1,0 +1,50 @@
+🔐 What Is Access Control?
+Access control defines who (subjects) can interact with what (objects) in an information system. It ensures that only authorized users, devices, or processes can access specific resources like files, databases, or applications.
+• 	Subjects: Users, devices, or software processes requesting access.
+• 	Objects: Resources such as servers, files, networks, or applications.
+Access control is essential for enforcing the CIA triad:
+• 	Confidentiality: Prevent unauthorized access to sensitive data.
+• 	Integrity: Ensure data is not altered by unauthorized entities.
+• 	Availability: Ensure resources are accessible to authorized users when needed.
+
+🧩 IAM: The Four Pillars of Access Control
+Modern access control is managed through Identity and Access Management (IAM) systems, which include:
+1. 🆔 Identification
+Definition: Assigning a unique identity to a subject.
+Example: A hospital creates a unique ID for each staff member in its electronic health record (EHR) system. Dr. Smith is assigned .
+Purpose: Establishes who is trying to access the system.
+
+2. 🔐 Authentication
+Definition: Verifying that the subject is who they claim to be.
+Example: Dr. Smith logs into the EHR system using a password and a fingerprint scan (multi-factor authentication).
+Purpose: Prevents impersonation and unauthorized access.
+Authentication Factors:
+• 	Something you know (password)
+• 	Something you have (security token)
+• 	Something you are (biometric)
+
+3. ✅ Authorization
+Definition: Determining what actions the authenticated subject is allowed to perform.
+Example: Dr. Smith can view and update patient records but cannot access billing information, which is restricted to the finance department.
+Models:
+• 	Discretionary Access Control (DAC): Resource owners assign permissions.
+• 	Mandatory Access Control (MAC): Permissions are enforced by system rules.
+• 	Role-Based Access Control (RBAC): Access is based on user roles (e.g., doctor, nurse, admin).
+
+4. 📊 Accounting (or Auditing)
+Definition: Tracking and logging user activities.
+Example: The hospital logs every time Dr. Smith accesses a patient file. If she tries to access a file outside her department, the system flags it.
+Purpose: Ensures accountability and supports forensic investigations.
+
+🛒 Real-World Example: E-Commerce Site
+Let’s apply IAM to an online store:
+• 	Identification: Customers create accounts with email and shipping details.
+• 	Authentication: They log in using passwords or OTPs sent to their phones.
+• 	Authorization: Only verified users can place orders; premium members see exclusive deals.
+• 	Accounting: The system logs every order, payment, and login attempt for auditing and fraud detection.
+
+🌐 System-Level Example
+Even servers and applications use access control:
+• 	A web browser verifies the identity of an e-commerce server using an SSL certificate (authentication).
+• 	The server checks if the browser session is authorized to access a user’s cart (authorization).
+• 	All interactions are logged for security monitoring (accounting).
