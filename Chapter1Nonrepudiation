@@ -1,0 +1,46 @@
+Non-repudiation is a critical concept in cybersecurity and digital communications that ensures a party in a transaction cannot deny the authenticity of their actions or commitments. It provides proof of origin, integrity, and delivery, making it essential for trust and accountability in digital systems.
+
+🔐 What Is Non-Repudiation?
+In simple terms, non-repudiation means:
+
+It ensures that:
+• 	A sender cannot deny having sent a message.
+• 	A receiver cannot deny having received it.
+• 	A user cannot deny having performed an action (like signing a document or making a transaction).
+
+🧩 How Is It Achieved?
+Non-repudiation is typically enforced through a combination of:
+1. Digital Signatures
+• 	Use cryptographic keys to sign data.
+• 	The signature is unique to the sender and verifiable by others.
+• 	Example: A lawyer digitally signs a contract using their private key. The recipient can verify the signature using the lawyer’s public key.
+2. Audit Logs
+• 	Record who did what and when.
+• 	Example: A bank’s system logs every login, transaction, and logout. If a customer disputes a transfer, the log shows their authenticated session.
+3. Timestamping
+• 	Adds a trusted time record to a transaction.
+• 	Example: A stock trade is timestamped to prove it occurred before a market shift.
+4. Receipts and Confirmations
+• 	Systems generate acknowledgments for actions.
+• 	Example: An e-commerce site sends a confirmation email after a purchase, proving the customer placed the order.
+
+🏦 Real-World Examples
+💳 Online Banking
+• 	A customer transfers funds using a secure portal.
+• 	The bank uses digital certificates, logs the transaction, and sends a confirmation.
+• 	If the customer later denies making the transfer, the bank has cryptographic and procedural evidence.
+📄 E-Signatures in Legal Documents
+• 	A real estate agent signs a lease agreement using DocuSign.
+• 	The platform records the signer’s IP address, timestamp, and authentication method.
+• 	This ensures the agent cannot deny signing the document.
+📧 Secure Email
+• 	A government official sends a classified document via encrypted email with a digital signature.
+• 	The recipient’s system verifies the sender and logs the delivery.
+• 	Both parties are accountable for the communication.
+
+🧠 Why It Matters
+Non-repudiation:
+• 	Builds trust in digital systems.
+• 	Supports legal enforceability of electronic transactions.
+• 	Strengthens accountability in cybersecurity.
+• 	Helps meet compliance requirements (e.g., HIPAA, GDPR, PCI-DSS).
