@@ -1,0 +1,108 @@
+Security controls are grouped into four categories—Managerial, Operational, Technical, and Physical—each serving to protect data and systems by ensuring confidentiality, integrity, availability, and non-repudiation. NIST further organizes these controls into 20 specialized families.
+
+🔐 What Are Security Controls?
+Security controls are safeguards or countermeasures used to reduce risk and protect information systems. They are part of a broader business risk management strategy and are often implemented by IT departments using best-practice frameworks like NIST SP 800-53, ISO/IEC 27001, or COBIT.
+These controls help ensure:
+- Confidentiality: Prevent unauthorized access
+- Integrity: Maintain accuracy and trustworthiness
+- Availability: Ensure systems and data are accessible when needed
+- Non-repudiation: Guarantee that actions or transactions cannot be denied
+
+📂 Categories of Security Controls
+- Managerial Controls
+- Focus on oversight and governance
+- Examples:
+- Risk assessments
+- Security policies
+- Control selection and evaluation tools
+- Typically implemented by leadership or compliance teams
+- Operational Controls
+- Executed by people, not systems
+- Examples:
+- Security awareness training
+- Incident response procedures
+- Security guards and manual inspections
+- Often managed by HR, facilities, or security teams
+- Technical Controls
+- Embedded in hardware, software, or firmware
+- Examples:
+- Firewalls
+- Antivirus software
+- Access control systems
+- Managed by IT and cybersecurity teams
+- Physical Controls
+- Protect physical access to systems and infrastructure
+- Examples:
+- Surveillance cameras
+- Locks and barriers
+- Lighting and alarm systems
+- Often handled by facilities or security personnel
+
+🧩 NIST SP 800-53 Control Families
+The National Institute of Standards and Technology (NIST) classifies controls into 20 families in its SP 800-53 Rev. 5 framework. These include:
+- Access Control (AC): Who can access what
+- Audit and Accountability (AU): Logging and monitoring
+- Awareness and Training (AT): Educating users
+- Configuration Management (CM): System settings and updates
+- Contingency Planning (CP): Backup and recovery
+- Identification and Authentication (IA): Verifying users
+- Incident Response (IR): Handling breaches
+- System and Communications Protection (SC): Securing data in transit
+- System and Information Integrity (SI): Ensuring data accuracy
+- ...and others covering privacy, personnel security, and supply chain risks
+These families help organizations select controls that match their risk profile and compliance needs.
+---------------------------------------------------------------------------------------------
+
+Security controls can be classified not only by their category (managerial, operational, technical, physical) but also by their functional type, which refers to the specific goal or purpose the control serves in protecting systems and data. Here's a breakdown of the key functional types:
+
+🔐 Functional Types of Security Controls
+1. 	Preventive Controls
+• 	Purpose: Stop threats before they occur.
+• 	Timing: Operate before an attack.
+• 	Examples:
+• 	Access control lists (ACLs) on firewalls
+• 	Antimalware software that blocks malicious code
+• 	Security policies that restrict unauthorized actions
+2. 	Detective Controls
+• 	Purpose: Identify and record security incidents.
+• 	Timing: Operate during an attack or unauthorized activity.
+• 	Examples:
+• 	System and network logs
+• 	Intrusion detection systems (IDS)
+• 	Security cameras and monitoring tools
+3. 	Corrective Controls
+• 	Purpose: Minimize damage and restore systems after an incident.
+• 	Timing: Operate after an attack.
+• 	Examples:
+• 	Backup and recovery systems
+• 	Patch management tools
+• 	Reimaging compromised systems
+4. 	Directive Controls
+• 	Purpose: Guide behavior and enforce rules.
+• 	Timing: Ongoing, often embedded in organizational culture.
+• 	Examples:
+• 	Security policies and SOPs
+• 	Employee contracts with disciplinary clauses
+• 	Training and awareness programs
+5. 	Deterrent Controls
+• 	Purpose: Discourage malicious actions through psychological or legal pressure.
+• 	Timing: Before or during an attempted intrusion.
+• 	Examples:
+• 	Warning signs about surveillance or legal consequences
+• 	Visible security measures like guards or cameras
+• 	Publicized enforcement of security policies
+6. 	Compensating Controls
+• 	Purpose: Provide alternative protection when primary controls are not feasible.
+• 	Timing: Can be preventive, detective, or corrective depending on implementation.
+• 	Examples:
+• 	Network segmentation to isolate vulnerable systems
+• 	Manual review processes when automated controls are unavailable
+• 	Enhanced monitoring for legacy systems lacking modern security features
+
+🧠 Summary of Timing and Purpose
+• 	Preventive: Before → Block threats
+• 	Detective: During → Identify threats
+• 	Corrective: After → Recover from threats
+• 	Directive: Always → Guide behavior
+• 	Deterrent: Before/During → Discourage threats
+• 	Compensating: Flexible → Substitute for missing controls
