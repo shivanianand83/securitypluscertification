@@ -1,0 +1,55 @@
+🛡️ Key Security Business Units
+1. 	Security Operations Center (SOC)
+• 	A centralized facility where security professionals monitor and defend critical information assets.
+• 	Provides real-time threat detection, incident response, and oversight of cybersecurity operations.
+• 	Supports other departments like finance, HR, and marketing by protecting their data and systems.
+• 	Typically found in large organizations due to the cost and complexity of setup and maintenance.
+• 	Staffed with analysts, engineers, and incident responders working around the clock.
+2. 	DevSecOps
+• 	An evolution of DevOps that integrates security into every phase of software development.
+• 	Encourages collaboration between developers, IT operations, and security teams.
+• 	Promotes the “shift left” approach—embedding security early in the development lifecycle (during planning and design).
+• 	Uses automation and coding to build, test, and deploy secure software faster.
+• 	Treats security operations as software-driven, requiring developers to contribute to detection and monitoring tools.
+3. 	Incident Response Team (CIRT / CSIRT / CERT)
+• 	A dedicated team responsible for managing and responding to security incidents.
+• 	Acts as the single point of contact for reporting breaches, malware outbreaks, or data leaks.
+• 	May operate within the SOC or as an independent unit, depending on organizational structure.
+• 	Handles containment, investigation, recovery, and post-incident analysis.
+• 	Coordinates with legal, compliance, and communication teams during major incidents.
+---------------------------------------------------------------------------------------
+🛡️ Security Operations Center (SOC)
+The SOC is the nerve center for monitoring and defending an organization’s digital infrastructure.
+Daily Tasks:
+- Monitor network traffic and system logs for suspicious activity
+- Respond to alerts from intrusion detection/prevention systems (IDS/IPS)
+- Investigate potential security incidents and escalate as needed
+- Maintain and tune SIEM (Security Information and Event Management) tools
+- Coordinate with other departments to verify anomalies
+- Conduct threat intelligence analysis and update detection rules
+- Generate daily security reports and dashboards
+- Perform vulnerability scans and track remediation efforts
+
+🧑‍💻 DevSecOps
+DevSecOps integrates security into the software development lifecycle, ensuring secure code and infrastructure from the start.
+Daily Tasks:
+- Review and scan code for vulnerabilities during development
+- Automate security testing in CI/CD pipelines
+- Collaborate with developers to fix security issues in code
+- Monitor cloud configurations and infrastructure for compliance
+- Update and manage security policies as code (e.g., IAM roles, firewall rules)
+- Deploy and maintain automated security tools (e.g., SAST, DAST)
+- Conduct threat modeling and risk assessments for new features
+- Educate development teams on secure coding practices
+
+🚨 Incident Response Team (CIRT / CSIRT / CERT)
+This team is the first responder to cybersecurity incidents, ensuring swift containment and recovery.
+Daily Tasks:
+- Monitor incident queues and triage incoming reports
+- Investigate alerts and determine scope and impact
+- Coordinate containment and eradication efforts
+- Document incident details and maintain response logs
+- Communicate with affected stakeholders and leadership
+- Update and test incident response playbooks
+- Conduct post-incident reviews and recommend improvements
+- Collaborate with legal and compliance teams for reporting obligations
