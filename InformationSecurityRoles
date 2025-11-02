@@ -1,0 +1,32 @@
+🛡️ Security Policy Foundation
+- A security policy is a formal document that outlines how an organization protects its data and systems.
+- It supports the CIA triad: Confidentiality, Integrity, and Availability.
+- Though implementation varies by industry (e.g., schools vs. manufacturers), the goal remains the same—protect employees, equipment, and data from threats.
+
+🧑‍💼 Key Roles and Their Responsibilities
+- Chief Information Officer (CIO)
+- Oversees the entire IT function.
+- May also be responsible for security strategy and policy enforcement.
+- Chief Technology Officer (CTO)
+- Focuses on leveraging emerging technologies to meet business goals.
+- Ensures new IT solutions align with security standards.
+- Chief Security Officer (CSO) / Chief Information Security Officer (CISO)
+- Leads the security department in larger organizations.
+- Develops and enforces security policies, risk management strategies, and compliance programs.
+- Domain Managers
+- Responsible for specific areas like building control, web services, or finance.
+- Ensure security policies are applied within their domain.
+- Technical and Specialist Staff
+- Includes system administrators, network engineers, and security analysts.
+- Implement, maintain, and monitor security controls.
+- May include dedicated roles like Information Systems Security Officer (ISSO).
+- Nontechnical Staff
+- Must comply with security policies and relevant laws.
+- Participate in training and report suspicious activities.
+- Directors and Owners
+- Hold external responsibility for security (due care and liability).
+- Ensure the organization meets legal and ethical obligations.
+
+🧠 Shared Responsibility
+- Security is a collective effort—every employee plays a role.
+- Awareness, compliance, and accountability are essential across all levels.
