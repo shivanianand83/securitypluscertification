@@ -1,0 +1,160 @@
+Network Vectors: The Pathways for Attack
+A Network Vector is a threat vector where an attacker uses a network connection—whether wired, wireless, or over the internet—as the pathway to deliver an exploit or perform an attack. The fundamental goal is to interact with a target system over the network to trigger a vulnerability.
+
+Specific Network Threat Vectors
+Here are the common network vectors attackers use, categorized by the type of network access they exploit.
+
+1. Direct Access
+Description: The attacker uses physical access to a facility or device.
+
+Examples:
+
+Using an unlocked and unattended workstation.
+
+Booting a computer from a USB drive to install malicious tools or reset passwords.
+
+Physically stealing a laptop, server, or hard drive.
+
+2. Wired Network
+Description: An attacker with physical site access connects an unauthorized device to an Ethernet port.
+
+Attack Scenarios: Once connected, the device can be used for:
+
+Eavesdropping on network traffic.
+
+On-path attacks to intercept and modify data.
+
+Launching exploits against other systems on the network.
+
+Running spoofed services (like a fake DHCP server).
+
+3. Remote and Wireless Networks
+Description: The attacker targets remote access solutions (like VPNs) or wireless networks (Wi-Fi).
+
+Methods:
+
+Credential Theft: Stealing VPN or Wi-Fi passwords.
+
+Cracking Security: Breaking weak wireless encryption (like WEP).
+
+Spoofing: Creating a malicious "Evil Twin" access point that mimics a legitimate one to harvest user credentials.
+
+4. Cloud Access
+Description: As companies move services to the cloud, attackers target these internet-accessible entry points.
+
+Methods:
+
+Finding a single cloud service, account, or host with weak passwords or misconfigurations.
+
+Targeting developer or administrator accounts with high levels of privilege.
+
+Attacking the Cloud Service Provider (CSP) itself to gain access to its customers.
+
+5. Bluetooth Network
+Description: Exploiting vulnerabilities in the short-range Bluetooth wireless protocol.
+
+Methods: Sending a malicious file or exploiting a flaw to take control of a device like a phone, headset, or laptop.
+
+6. Default Credentials
+Description: Gaining control of a device or application because it still uses the factory-set default username and password.
+
+Why it works: These credentials are often published in manuals and are easy for attackers to find and try.
+
+7. Open Service Ports
+Description: An attacker connects to a TCP or UDP network port that is open and accessible but should not be.
+
+The Risk:
+
+The service running on that port might have a software vulnerability that can be exploited.
+
+The service could be targeted for a Denial-of-Service (DoS) attack.
+
+The Defense (Reducing the Attack Surface):
+
+Close all unnecessary ports. A server should only have ports open for the specific services it provides.
+
+Use firewalls to filter traffic to and from these ports.
+
+Use Intrusion Detection/Prevention Systems (IDS/IPS) to monitor for malicious activity on necessary ports.
+
+The Foundation: Remote vs. Local Exploits
+This classification describes the level of access an attacker needs to successfully trigger a software vulnerability. It's a critical distinction for prioritizing patches and understanding the potential impact of a security flaw.
+
+Imagine a vulnerability is a weak spot in a fortress wall. The difference between a remote and local exploit is where the attacker has to be standing to take advantage of that weak spot.
+
+Remote Exploit
+A remote exploit is the most dangerous type of vulnerability. It allows an attacker to compromise a system over a network without having any prior access or credentials.
+
+Analogy: An attacker can knock a hole in the fortress wall by firing a cannon from a distant hill. They never need to set foot inside the gates first.
+
+Technical Definition: The vulnerability can be exploited by sending malicious code (the "exploit") to the target over a network. The exploitation does not depend on the attacker having an authenticated session on the system.
+
+Attackers Love These Because: They provide the biggest "bang for the buck." An attacker can scan the entire internet for a specific remote vulnerability and compromise thousands of systems without needing a single username or password.
+
+Real-World Example:
+
+The EternalBlue exploit targeted a vulnerability in Microsoft's SMB protocol. An attacker could send a specially crafted packet to a Windows machine over the network to take control of it, no login required. This was a key vector in the WannaCry ransomware outbreak.
+
+Key Takeaway: Remote vulnerabilities massively increase the attack surface because every system exposed to the network (whether the internet or a local network) is a potential target. These are always patched with the highest urgency.
+
+Local Exploit
+A local exploit is one where the attacker must already have some level of access to the target machine to run the exploit code. The attack might still happen over a network, but the crucial point is that the attacker is executing code from an authenticated session.
+
+Analogy: The weak spot in the fortress wall is on the inside of the courtyard. The attacker first needs to trick a guard to open the gate (or sneak in) to get into a position where they can exploit it.
+
+Technical Definition: The exploit code must be executed from a shell, command prompt, or user session on the compromised computer. The attacker needs valid credentials or must hijack an existing user's session.
+
+How an Attacker Gets This Access: They typically use another attack vector first, such as:
+
+Tricking a user into running a malicious file (e.g., via a phishing email).
+
+Stealing a user's credentials.
+
+Compromising a different, less-secure application.
+
+Real-World Example:
+
+A privilege escalation vulnerability in Windows or Linux. An attacker who has compromised a standard user account (e.g., by phishing) can run a local exploit to gain Administrator or Root privileges on that same machine.
+
+Key Takeaway: Local exploits are often used in multi-stage attacks. The attacker uses one method to get a "foot in the door" (a low-privilege user account) and then uses a local exploit to gain full control of the system.
+
+The Foundation: Remote vs. Local Exploits
+This classification describes the level of access an attacker needs to successfully trigger a software vulnerability. It's a critical distinction for prioritizing patches and understanding the potential impact of a security flaw.
+
+Imagine a vulnerability is a weak spot in a fortress wall. The difference between a remote and local exploit is where the attacker has to be standing to take advantage of that weak spot.
+
+Remote Exploit
+A remote exploit is the most dangerous type of vulnerability. It allows an attacker to compromise a system over a network without having any prior access or credentials.
+
+Analogy: An attacker can knock a hole in the fortress wall by firing a cannon from a distant hill. They never need to set foot inside the gates first.
+
+Technical Definition: The vulnerability can be exploited by sending malicious code (the "exploit") to the target over a network. The exploitation does not depend on the attacker having an authenticated session on the system.
+
+Attackers Love These Because: They provide the biggest "bang for the buck." An attacker can scan the entire internet for a specific remote vulnerability and compromise thousands of systems without needing a single username or password.
+
+Real-World Example:
+
+The EternalBlue exploit targeted a vulnerability in Microsoft's SMB protocol. An attacker could send a specially crafted packet to a Windows machine over the network to take control of it, no login required. This was a key vector in the WannaCry ransomware outbreak.
+
+Key Takeaway: Remote vulnerabilities massively increase the attack surface because every system exposed to the network (whether the internet or a local network) is a potential target. These are always patched with the highest urgency.
+
+Local Exploit
+A local exploit is one where the attacker must already have some level of access to the target machine to run the exploit code. The attack might still happen over a network, but the crucial point is that the attacker is executing code from an authenticated session.
+
+Analogy: The weak spot in the fortress wall is on the inside of the courtyard. The attacker first needs to trick a guard to open the gate (or sneak in) to get into a position where they can exploit it.
+
+Technical Definition: The exploit code must be executed from a shell, command prompt, or user session on the compromised computer. The attacker needs valid credentials or must hijack an existing user's session.
+
+How an Attacker Gets This Access: They typically use another attack vector first, such as:
+
+Tricking a user into running a malicious file (e.g., via a phishing email).
+
+Stealing a user's credentials.
+
+Compromising a different, less-secure application.
+
+Real-World Example:
+
+A privilege escalation vulnerability in Windows or Linux. An attacker who has compromised a standard user account (e.g., by phishing) can run a local exploit to gain Administrator or Root privileges on that same machine.
+
+Key Takeaway: Local exploits are often used in multi-stage attacks. The attacker uses one method to get a "foot in the door" (a low-privilege user account) and then uses a local exploit to gain full control of the system.
