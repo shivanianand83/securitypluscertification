@@ -1,0 +1,178 @@
+Introduction: Attack Surfaces
+In cybersecurity, understanding how you might be attacked is just as important as understanding who might attack you. The concepts of Attack Surfaces and Threat Vectors are fundamental to this understanding, forming the foundation of a proactive security posture.
+
+What is an Attack Surface?
+Think of your organization's digital presence as a castle. The attack surface is the sum total of every possible door, window, gate, and even every loose brick that an attacker could try to use to get inside.
+
+Formal Definition: The attack surface is all the points where an unauthorized user (a threat actor) could potentially try to exploit a vulnerability to enter or extract data from your environment.
+
+This includes:
+
+Network Ports: Open ports on servers, routers, and firewalls.
+
+Applications: Web apps, desktop software, and mobile apps, especially those with user input.
+
+Systems: Servers, computers, laptops, and IoT devices.
+
+Users & Identities: Employee accounts, email addresses, and their level of security awareness.
+
+Protocols & Services: Any enabled service (like FTP, SMB, RDP) that accepts connections.
+
+The primary goal of security teams is to minimize the attack surface. This means shutting unnecessary doors and windows—disabling unused ports, uninstalling redundant services, and restricting user permissions to only what is essential.
+
+Assessing the Attack Surface
+An organization has one large, overall attack surface, but it's more effective to assess it in smaller, manageable scopes:
+
+Organizational Level: The entire company's digital footprint.
+
+System Level: A single server, a specific database, or a user's workstation.
+
+Application Level: A specific web application or software suite.
+
+Identity Level: The collective risk posed by all user accounts and their access privileges.
+
+A critical part of assessment is perspective. You must consider:
+
+External vs. Internal Threats: The attack surface for an external hacker should be very small (e.g., only a VPN gateway and a web server). The attack surface for a malicious insider is much larger, as they already have some level of trusted access.
+
+Threat Actor Capability: A sophisticated threat actor may know your attack surface better than you do and can discover novel ways to exploit it.
+
+Threat Vectors (or Attack Vectors)
+If the attack surface is the list of all possible entry points, a threat vector is the specific path or method an attacker chooses to use.
+
+Definition: A threat vector is the path or method a threat actor uses to carry out an attack, such as data theft, service disruption, or a disinformation campaign.
+
+Examples of Common Threat Vectors:
+
+Phishing Emails: A vector that targets the user part of the attack surface.
+
+Exploiting a Software Vulnerability: A vector that targets a specific application.
+
+Brute-Force Attack on a Login Portal: A vector that targets an authentication service.
+
+Misconfigured Cloud Storage: A vector that targets an infrastructure component.
+
+Sophisticated attacks often use multiple vectors in a multi-stage campaign. For example, a phishing email (first vector) might trick a user into installing malware, which then exploits a network vulnerability (second vector) to move laterally and steal data.
+
+Key Distinction: Threat Vector vs. Attack Vector
+The terms are often used interchangeably, but a subtle distinction can be made:
+
+Threat Vector: Used when analyzing potential risks and the attack surface. It's the "theoretical" path an attacker could take.
+
+Example: "An unpatched web server is a potential threat vector for ransomware."
+
+Attack Vector: Often used to describe the actual, specific method used in a successful exploit.
+
+Example: "The investigation revealed that the attack vector was a zero-day vulnerability in the login module."
+
+Vulnerable Software Vectors
+A "Vulnerable Software Vector" is a threat vector where an attacker exploits a flaw in a software's code or design to compromise a system. This is one of the most common and dangerous paths attackers use to breach networks.
+
+The Core Problem: Software Flaws
+All complex software can contain bugs. When a bug creates a security weakness that can be used to bypass security controls or crash a system, it is classified as a vulnerability.
+
+Specific Circumstances: Vulnerabilities often require very specific conditions to be exploited (e.g., a certain type of malformed input, a specific system configuration).
+
+Patching: Once discovered, vendors typically release a fix, or patch, to resolve the vulnerability.
+
+The Reality: Due to the complexity and rapid development cycle of modern software, it's nearly impossible for any product to be completely vulnerability-free. Furthermore, organizations often struggle with effective patch management, leaving systems unpatched and vulnerable for long periods.
+
+How This Expands the Attack Surface
+The variety and volume of software in an organization directly determine the size of this part of the attack surface.
+
+Diverse Ecosystem: A company running many different operating systems, applications, and versions on its devices (servers, computers, cloud instances) has a large attack surface.
+
+Reducing the Surface: This can be minimized by:
+
+Consolidation: Using fewer software products across the organization.
+
+Standardization: Ensuring the same, patched version of a product is deployed everywhere.
+
+A Critical Sub-Category: Unsupported Systems
+This is a severe and common instance of vulnerable software.
+
+Definition: An unsupported system or application is one where the vendor has stopped developing updates and security patches.
+
+The Danger: Unless the organization can develop its own patches (which is rare and expensive), these systems remain permanently vulnerable to known exploits. They become low-hanging fruit for attackers.
+
+Mitigation: Isolation as a Compensating Control
+
+When replacing an unsupported application is impossible, the best strategy is isolation.
+
+The Goal: Severely restrict the vulnerable system's connections to other parts of the network. The idea is to make it incredibly difficult for an attacker to even reach the vulnerable app to exploit it.
+
+Compensating Control: This is a security measure implemented to compensate for the lack of a primary control (in this case, patching). It doesn't fix the vulnerability itself but reduces the risk of it being exploited.
+
+How Vulnerabilities are Discovered: Scanning
+Vulnerability scanning is the automated process of proactively identifying security weaknesses in systems, networks, and applications. It's a foundational practice for both security teams defending an organization and threat actors attacking one.
+
+The core principle is simple: a scanning tool systematically probes targets to gather information and compare it against a database of known vulnerabilities.
+
+The Two Primary Scanning Methods
+There are two main technical approaches to scanning, each with its own advantages and use cases.
+
+1. Client-Based (Agent) Scanning
+This method involves installing a small software program, called an agent, on each device (server, workstation, etc.) that needs to be scanned.
+
+How it Works: The agent runs locally on the host, examining the system from the inside. It has deep access to check for:
+
+Installed software and precise versions.
+
+Operating system patches and configurations.
+
+Local file system settings and security policies.
+
+Running services.
+The agent then reports its findings back to a central management server.
+
+Advantages:
+
+Comprehensive & Accurate: Has high-fidelity visibility into the system's true state, including offline software and configuration files.
+
+Network Efficient: Communication is typically minimal, just sending results to the server.
+
+Can Scan Continuously: The agent can always be "on," providing real-time alerts when a new vulnerability is introduced.
+
+Primary Use Case: Internal Security Management. This is the method organizations use to maintain a continuous, accurate inventory of their own software vulnerabilities for patch management and compliance. It's not typically used by external attackers because it requires installing software on the target.
+
+2. Agentless Scanning
+This method probes a host over the network without installing any software on the target system. It interacts with the target's exposed services remotely.
+
+How it Works: The scanner sends various network packets to the target (e.g., to specific ports like 80 for web, 22 for SSH) and analyzes the responses ("banners," error messages, behavior) to fingerprint:
+
+What ports are open and what services are running on them.
+
+The type and version of the operating system and applications.
+
+Configuration weaknesses and known vulnerabilities in those services.
+
+Advantages:
+
+Easy Deployment: No need to install and maintain agents on thousands of devices.
+
+Broad Network View: Can quickly scan an entire network range to discover unknown or unauthorized devices.
+
+Disadvantages:
+
+Less Detailed: Can only see what is exposed over the network; it might miss vulnerabilities in software that isn't actively listening on a port.
+
+Can Be Disruptive: Some aggressive scans can overload or crash fragile services.
+
+Can Be Detected: The scanning activity is often logged by firewalls and intrusion detection systems.
+
+Primary Use Case: Threat Actor Reconnaissance & Internal Network Audits. Attackers heavily favor agentless scanning because it's stealthy and requires no prior access to the target. They can use it to map a target's external and internal attack surface from a distance. Security teams also use it for internal network audits to find weaknesses from an attacker's perspective.
+
+The Scanning Process in Practice
+Whether used by a defender or an attacker, the process follows a similar pattern:
+
+Discovery: The scanner identifies active hosts on a network (e.g., using ping sweeps).
+
+Port Scanning: It determines which network ports are open and accepting connections on those hosts.
+
+Service Interrogation: It probes the open ports to determine what service (e.g., Apache Web Server 2.4.1) and operating system are running.
+
+Vulnerability Matching: The scanner compares the collected information (service, version, OS) against a massive database of known vulnerabilities (like the National Vulnerability Database - NVD).
+
+Reporting: It generates a report listing discovered vulnerabilities, often ranked by severity (e.g., Critical, High, Medium).
+
+
