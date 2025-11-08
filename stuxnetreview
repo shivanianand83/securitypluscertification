@@ -1,0 +1,24 @@
+Overview
+Stuxnet is a highly sophisticated computer worm, discovered in 2010, that is widely believed to be a state-sponsored cyberweapon. It is notable for being the first known malware specifically designed to cause physical damage to industrial machinery, and it successfully disrupted Iran's nuclear program.
+
+Key Points
+Target and Purpose: Its primary target was the Iranian nuclear facility at Natanz. Stuxnet was designed to sabotage Iran's uranium enrichment program by attacking the industrial control systems (specifically, Siemens Programmable Logic Controllers or PLCs) that operated the centrifuges.
+
+Method of Attack: The worm didn't just steal data; it caused physical destruction. It secretly took control of the centrifuges, making them spin at dangerously high speeds and then very low speeds, while feeding normal operational data back to the monitoring systems to hide the sabotage. This caused the centrifuges to tear themselves apart over time.
+
+Sophistication: Stuxnet was unprecedented in its complexity. It used:
+
+Four "Zero-Day" Exploits: These are previously unknown software vulnerabilities, making them highly valuable and effective.
+
+Rootkit Technology: To hide itself on the PLCs and prevent detection.
+
+Valid Digital Certificates: It was signed with stolen legitimate certificates from real companies to trick systems into trusting it.
+
+Infection Vector: It was designed to spread via USB flash drives, as the target systems were "air-gapped" (not connected to the public internet). This suggests a required element of human espionage to initially introduce the worm into the secure facility.
+
+Attribution: While no government has officially claimed responsibility, extensive analysis by security experts and news organizations points to a joint development effort by the United States and Israel (with the operation reportedly code-named "Operation Olympic Games").
+
+Significance and Legacy: Stuxnet marked a turning point in cyber warfare, demonstrating that a digital attack could cause tangible, physical destruction. It raised global awareness about the vulnerabilities of critical infrastructure (like power grids and water systems) to cyberattacks and opened a new chapter in state-on-state conflict.
+
+In short, Stuxnet was a groundbreaking cyberweapon that physically damaged Iran's nuclear program by covertly manipulating industrial controls, setting a new precedent for the use of malware in geopolitical conflict.
+
