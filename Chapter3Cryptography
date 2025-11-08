@@ -1,0 +1,473 @@
+This lesson introduces the foundational concepts of cryptography, which is a core component of the "Protect" function in cybersecurity.
+
+The "Protect" Function and the CIA Triad
+The primary goal of the "Protect" function is to build secure IT systems. These systems must be reliable and safe, which is defined by three key attributes, known as the CIA Triad:
+
+Confidentiality: Ensuring that data is kept private and secret from unauthorized access.
+
+Integrity: Guaranteeing that data is accurate and has not been tampered with.
+
+Availability: Ensuring that systems and data are accessible to authorized users when needed.
+
+Cryptography is a fundamental tool used to achieve these goals. It is the science of securing information by transforming it into an unreadable format, which is essential for protecting data in storage and during transmission.
+
+Why This Knowledge is Critical for You
+As a security professional, you cannot simply rely on cryptography as a "black box." This lesson emphasizes that you need a strong technical understanding of:
+
+The Core Concepts: How cryptographic algorithms work at a fundamental level.
+
+Their Implementation: How these algorithms are used in real-world protocols and services (like HTTPS, VPNs, and secure email).
+
+This knowledge empowers you to:
+
+Explain the value of cryptographic systems to stakeholders.
+
+Select the right cryptographic technology for a specific security need.
+
+Lesson Objectives: A Roadmap
+This lesson is structured to build your knowledge in three key areas:
+
+1. Compare and contrast cryptographic algorithms.
+What it means: You will learn about different types of cryptographic algorithms (like symmetric, asymmetric, and hashing) and understand their strengths, weaknesses, and ideal use cases.
+
+Example: You'll learn when to use a fast symmetric algorithm (like AES) for bulk data encryption versus an asymmetric algorithm (like RSA) for secure key exchange.
+
+2. Explain the importance of public key infrastructure and digital certificates.
+What it means: You will move beyond the algorithms themselves to understand the framework that makes them trustworthy on a global scale, like the internet.
+
+This covers:
+
+Public Key Infrastructure (PKI): The system that creates, manages, and verifies digital certificates.
+
+Digital Certificates: The digital "passports" that prove the identity of a person, server, or company online. This is what puts the "lock" in your browser bar and allows you to trust that you are connected to your real bank and not an imposter.
+
+3. Explain the importance of using appropriate cryptographic solutions for encryption and key exchange.
+What it means: This objective ties everything together. It's about making smart, secure choices. You will learn why it's critical to:
+
+Use strong, modern encryption and avoid weak, outdated algorithms.
+
+Securely exchange keys (the secret codes needed for encryption) between parties, which is one of the hardest problems in cryptography.
+
+In summary, this lesson provides the essential knowledge to understand, justify, and implement the cryptographic controls that form the bedrock of secure communication and data protection in modern IT systems.
+
+Cryptographic Algorithms: The Core Tools of Secrecy and Integrity
+A cryptographic algorithm is a specific, mathematical formula or set of rules used to transform data. Think of it as a recipe for scrambling and unscrambling information.
+
+To Encode (Encrypt): The algorithm takes readable data (plaintext) and a secret value (a key) and produces unreadable, scrambled data (ciphertext).
+
+To Decode (Decrypt): The algorithm takes the ciphertext and the correct key to recover the original plaintext.
+
+Modern security relies on three primary types of these "recipes," each serving a distinct purpose.
+
+The Three Pillars of Modern Cryptography
+1. Symmetric Encryption (Private Key Cryptography)
+Core Concept: The same key is used to both encrypt and decrypt the data. It's a shared secret between the sender and receiver.
+
+Analogy: A locked box where the same key is used to both lock and unlock it.
+
+Characteristics:
+
+Very Fast and Efficient: Ideal for encrypting large volumes of data.
+
+Key Distribution Problem: The biggest challenge is securely getting the shared key to all parties without it being intercepted.
+
+Common Algorithms: AES (Advanced Encryption Standard), DES, 3DES.
+
+Primary Use Case: Bulk data encryption (e.g., encrypting an entire hard drive, a database, or the contents of a secure communication session).
+
+2. Asymmetric Encryption (Public Key Cryptography)
+Core Concept: Uses a pair of mathematically linked keys: a Public Key and a Private Key.
+
+The Public Key is shared openly and is used to encrypt data.
+
+The Private Key is kept secret and is used to decrypt data.
+
+Analogy: A mailbox with a public slot. Anyone can drop a letter in (encrypt with the public key), but only the person with the private key to the mailbox can open it and read the letters (decrypt).
+
+Characteristics:
+
+Solves Key Distribution: No need to secretly share a key beforehand.
+
+Computationally Slow: Not suitable for encrypting large amounts of data directly.
+
+Common Algorithms: RSA, Elliptic Curve Cryptography (ECC).
+
+Primary Use Cases: Secure Key Exchange (sending a symmetric key securely), Digital Signatures (proving identity and integrity), and SSL/TLS for web security.
+
+3. One-Way Hash Functions
+Core Concept: A mathematical function that takes an input (of any size) and produces a unique, fixed-size string of characters, called a hash or digest. It is a one-way process—the input cannot be recovered from the hash.
+
+Analogy: A fingerprint for data. A fingerprint uniquely identifies a person, but you cannot reconstruct the person from their fingerprint.
+
+Characteristics:
+
+Deterministic: The same input always produces the same hash.
+
+Irreversible: It is computationally infeasible to reverse the process.
+
+Avalanche Effect: A tiny change in the input (even one character) creates a completely different, unpredictable hash.
+
+Common Algorithms: SHA-256, MD5 (now considered weak).
+
+Primary Use Cases: Verifying data integrity (ensuring a file hasn't been altered), storing passwords (the hash is stored, not the password itself), and digital signatures.
+
+Real-World Example (Web Browsing - HTTPS):
+
+Your browser uses Asymmetric Encryption to verify the website's identity and to securely exchange a symmetric key.
+
+The actual data transfer is then encrypted using the much faster Symmetric Encryption with that exchanged key.
+
+Hash Functions are used throughout to ensure the data packets have not been tampered with in transit.
+
+By combining these algorithms, we get the security benefits of asymmetric cryptography without the performance penalty, demonstrating why understanding and contrasting them is essential for deploying effective security controls.
+
+Cryptographic Concepts: The Foundation of Digital Secrecy
+Cryptography is the science of securing information by transforming it into a secret code. The core idea is that the secrecy lies in the method of encoding and the key, not in hiding the existence of the message itself.
+
+Cryptography vs. Security Through Obscurity
+Security Through Obscurity: Relying on the secrecy of the design or location of a system to provide security (e.g., "If no one knows the server is here, it's safe"). This is considered a weak and high-risk strategy because once the secret is discovered, all security is lost.
+
+Cryptography: The system's design can be completely public. Security is maintained because even if an attacker intercepts the encrypted message, they cannot read it without the secret key. The strength lies in the mathematical complexity of the algorithm and the secrecy of the key.
+
+Essential Cryptographic Terminology
+To discuss cryptography, we use a standard set of terms:
+
+Plaintext (or Cleartext): The original, readable message or data before it is encrypted. This is what you want to protect.
+
+Ciphertext: The scrambled, unreadable output after the plaintext has been encrypted.
+
+Algorithm (or Cipher): The specific mathematical formula or set of rules used to perform encryption and decryption. It's the "recipe" for scrambling and unscrambling the data.
+
+Cryptanalysis: The science of breaking cryptographic codes—finding weaknesses in the algorithm or key to convert ciphertext back to plaintext without the proper key.
+
+The Cast of Characters
+To simplify explanations, cryptography uses a standard set of fictional characters:
+
+Alice: The person who wants to send a genuine, secure message. She is always the sender.
+
+Bob: The person who is the intended recipient of Alice's message.
+
+Mallory: A malicious attacker. Her goal is to eavesdrop on, alter, or block the communication between Alice and Bob.
+
+The Three Pillars of Cryptographic Algorithms
+Different types of cryptographic algorithms are used to achieve specific security goals:
+
+Hashing Algorithms:
+
+Purpose: Primarily to ensure Data Integrity.
+
+How it works: Creates a unique, fixed-length "fingerprint" (a hash) of the data. It is a one-way function—easy to compute the hash from the data, but practically impossible to reverse it to get the original data.
+
+Example Use: Verifying a file download hasn't been corrupted or tampered with.
+
+Symmetric Encryption (Secret Key Cryptography):
+
+Purpose: Primarily to ensure Confidentiality.
+
+How it works: Uses the same secret key for both encryption (by Alice) and decryption (by Bob). The challenge is securely sharing that single key without Mallory intercepting it.
+
+Example Use: Encrypting the contents of a hard drive or the bulk of a secure web session.
+
+Asymmetric Encryption (Public Key Cryptography):
+
+Purpose: Enables Confidentiality, Key Exchange, and Non-Repudiation (proving that a message came from a specific person).
+
+How it works: Uses a mathematically linked key pair: a Public Key (which can be shared with anyone) and a Private Key (which is kept secret).
+
+What is encrypted with the public key can only be decrypted with the corresponding private key (for confidentiality).
+
+What is signed with a private key can be verified by anyone with the public key (for non-repudiation).
+
+Example Use: SSL/TLS for websites, secure email, and digitally signing software.
+
+In summary, these concepts form the vocabulary and toolkit you need to understand how modern cryptography provides security not by hiding messages, but by making them unreadable to anyone without the proper key.
+Symmetric Encryption: Shared Secret for Secrecy
+Symmetric Encryption is a type of cryptography where the same secret key is used to both encrypt the plaintext (original message) and decrypt the ciphertext (scrambled message).
+
+Core Principle: One key for locking and unlocking.
+
+Primary Goal: To ensure Confidentiality—keeping the data secret from anyone who doesn't possess the key.
+
+The Foundation: How Algorithms Scramble Data
+To understand complex modern ciphers, it helps to know two basic techniques they are built upon:
+
+1. Substitution Ciphers
+Concept: Replacing each unit (like a letter) in the plaintext with a different unit to create the ciphertext.
+
+Example: ROT13
+
+Each letter is "rotated" 13 places forward in the alphabet.
+
+A becomes N, B becomes O, and so on.
+
+The ciphertext "Uryyb Jbeyq" is the encrypted form of the plaintext "Hello World".
+
+2. Transposition Ciphers
+Concept: The characters themselves don't change, but their order is shuffled according to a specific pattern.
+
+Example from the text:
+
+Write "HELLO WORLD" in a grid by columns (ignoring the space):
+
+text
+H L O O L
+E L W R D
+Read the grid by rows to create the ciphertext: "HLOOLELWRD".
+
+Modern symmetric algorithms (like AES) use multiple, complex rounds of substitution and transposition to make the relationship between the plaintext and ciphertext extremely difficult to crack.
+
+The Symmetric Encryption Process: Alice and Bob
+The process relies entirely on the two parties sharing the same secret key beforehand.
+
+Key Agreement: Alice and Bob must meet in a secure way (in person or via a secure channel) to agree on both the algorithm (e.g., AES) and the specific secret key to use. They must guard this key carefully.
+
+Encryption: Alice uses the symmetric algorithm and the shared secret key to encrypt her plaintext file into ciphertext.
+
+Transmission: Alice sends the ciphertext to Bob over a network. Even if Mallory the attacker intercepts it, she cannot read it without the key.
+
+Decryption: Bob receives the ciphertext and uses the same algorithm and same secret key to decrypt it back into the original plaintext.
+
+Summary
+Symmetric encryption is the workhorse for confidentiality. It's the tool you use when you need to encrypt a lot of data quickly and securely. However, its critical weakness—securely sharing the key—is what led to the development of Asymmetric Encryption (Public Key Cryptography), which is often used to solve the key exchange problem for symmetric encryption.
+
+Key Length: The Measure of Cryptographic Strength
+Key Length is the number of bits used in a cryptographic key. It is a primary factor in determining the strength of an encryption algorithm against a brute-force attack—an attack where every possible key is tried until the correct one is found.
+
+Think of it as the number of digits in a combination lock. A 2-digit lock has 100 possible combinations (00-99), while a 4-digit lock has 10,000 (0000-9999). The more digits, the harder it is to guess the combination by trying every possibility.
+
+Core Concepts: Keyspace and Brute Force
+Keyspace: This is the total number of possible unique keys that can be created for a given key length. A larger keyspace means more possibilities for an attacker to check.
+
+Brute Force Cryptanalysis: The simple, but computationally expensive, attack method of trying every single key in the keyspace until the correct one is found, turning the ciphertext back into readable plaintext.
+
+From Simple Ciphers to Modern Encryption
+The text uses the ROT13 cipher as a simple example:
+
+Key: In ROT13, the key is the number 13.
+
+Keyspace: The possible keys are ROT1, ROT2, ... up to ROT25. This gives a keyspace of 25 possible keys. A computer could try all 25 in a fraction of a second.
+
+Modern encryption, like the Advanced Encryption Standard (AES), uses keys made of bits (0s and 1s).
+
+AES-128: Uses a 128-bit key.
+
+Keyspace: The number of possible keys is 2¹²⁸.
+
+This is not 128 * 2 = 256. It's 2 multiplied by itself 128 times.
+
+2¹²⁸ is approximately 340 undecillion (that's a 34 followed by 37 zeros). This number is so vast that a brute-force attack with all the computers on Earth would take longer than the current age of the universe to succeed.
+
+Comparing Key Lengths: It's Exponential
+The text makes a crucial point: increasing the key length does not just double the security; it increases it exponentially.
+
+AES-128: Keyspace = 2¹²⁸
+
+AES-256: Keyspace = 2²⁵⁶
+
+2²⁵⁶ is not twice as big as 2¹²⁸.
+
+2²⁵⁶ = (2¹²⁸) * (2¹²⁸)
+
+This means the AES-256 keyspace is as many times larger than the AES-128 keyspace as the AES-128 keyspace is large itself. It's many trillions of times larger, making it significantly more resistant to future advances in computing, including quantum computers.
+
+The Trade-Off: Security vs. Performance
+There is a drawback to using longer keys:
+
+Computational Cost: Encrypting and decrypting data with a longer key (like AES-256) requires more memory and more processor cycles than using a shorter key (like AES-128).
+
+The Balance: For most applications today, AES-128 provides an excellent balance of speed and security. AES-256 is used for highly sensitive data where the extra security margin is worth the slight performance cost.
+
+Summary
+Key Length determines the size of the keyspace.
+
+A larger keyspace (from a longer key) provides exponentially greater resistance to brute-force attacks.
+
+The choice of key length is a trade-off between the desired level of security and the computational performance required.
+
+Asymmetric Encryption: The Power of Key Pairs
+Asymmetric Encryption (also known as Public Key Cryptography) is a type of cryptography that uses a pair of mathematically related keys: a Public Key and a Private Key. This solves the fundamental problem of symmetric encryption: how to securely share a secret key.
+
+Core Principle: Two different keys for locking and unlocking. What one key encrypts, only the other can decrypt.
+
+The Two Keys and Their Roles
+Public Key: This key is designed to be shared publicly with anyone and everyone. It is not a secret.
+
+Private Key: This key is kept strictly secret by the owner and must never be shared.
+
+The mathematical relationship between them is a one-way function: it is computationally infeasible to derive the private key from the public key.
+
+The Process: How Alice Sends a Secret to Bob
+The classic use case is for confidentiality. The scenario below illustrates how Alice can send a secure message to Bob without them ever having met before.
+
+Key Generation: Bob generates his own public/private key pair. He keeps his private key secure and publishes his public key to a directory or sends it directly to Alice.
+
+Encryption: Alice wants to send a secret message to Bob. She retrieves Bob's public key, uses it to encrypt her message, turning it into ciphertext.
+
+Transmission: Alice sends the ciphertext to Bob over a network. Mallory the attacker can intercept it, and she may even have a copy of Bob's public key.
+
+Decryption: Bob receives the ciphertext and uses his private key to decrypt it and read the original message.
+
+Why it's Secure: Even though Mallory has the ciphertext and the public key used to create it, she cannot decrypt the message. The public key can only encrypt; it cannot decrypt. Only Bob's secret private key can do that.
+
+The Drawback and The Hybrid Solution
+The major weakness of asymmetric encryption is performance.
+
+It's Slow: The mathematical operations involved are complex and require substantial computing power compared to symmetric encryption.
+
+Inefficient for Bulk Data: It is not practical for encrypting large amounts of data, like entire hard drives or streaming video.
+
+The Solution: Hybrid Encryption
+
+To get the best of both worlds, systems use a hybrid approach:
+
+Session Key: Alice generates a random, strong symmetric key (called a session key).
+
+Encrypt the Data: She uses this fast symmetric key to encrypt the actual bulk of her message.
+
+Encrypt the Key: She then uses Bob's public key to encrypt only the symmetric session key.
+
+Send Both: She sends the encrypted data and the encrypted session key to Bob.
+
+Bob Decrypts: Bob uses his private key to decrypt the session key, and then uses that session key to decrypt the actual message.
+
+This process allows for the secure exchange of a symmetric key, solving the key distribution problem, while still leveraging the speed of symmetric encryption for the main data.
+Hashing: The Digital Fingerprint
+A cryptographic hash function is a mathematical algorithm that takes an input (or 'message') of any size (like a file, password, or even an entire hard drive) and produces a fixed-size string of characters, which is typically a sequence of numbers and letters. This output is called a hash, digest, or checksum.
+
+Think of it as a digital fingerprint for data. A fingerprint is a unique, fixed-size identifier for a person; similarly, a hash is a unique identifier for a piece of data.
+
+The Core Properties of a Cryptographic Hash
+For a hash function to be secure, it must have these key properties:
+
+Deterministic: The same input will always produce the exact same hash.
+
+One-Way Function (Pre-image Resistance): It is computationally infeasible to reverse the process. Given a hash output, you cannot figure out the original input.
+
+Avalanche Effect: A tiny change in the input (even a single character or bit) will produce a dramatically different hash. For example:
+
+Hello → 8b1a9953c4611296a827abf8c47804d7
+
+hello → 5d41402abc4b2a76b9719d911017c592
+
+Collision Resistance: It is extremely unlikely that two different inputs will ever produce the same hash output.
+
+How Hashing is Used in Practice
+1. Verifying Data Integrity (File Downloads)
+This is the most common use case to ensure a file has not been corrupted or tampered with during transfer.
+
+The Process:
+
+Publisher (Alice) creates a file (setup.exe) and calculates its hash (e.g., a SHA-256 checksum). She publishes both the file and the hash on her website.
+
+User (Bob) downloads the file and separately copies the published hash.
+
+Bob runs the same hash function on the downloaded file. He compares the hash he computed with the one published by Alice.
+
+The Outcome:
+
+Hashes Match: The file is authentic and has not been altered. Bob can trust it.
+
+Hashes Don't Match: The file is corrupt or has been tampered with by Mallory. Bob should not run the file.
+
+2. Password Storage
+Hashing is fundamental to secure password storage. Systems should never store your actual password.
+
+The Process:
+
+Registration: When you create a password, the system immediately hashes it and stores only the hash in the database.
+
+Login: When you log in, the system hashes the password you type.
+
+Verification: The system compares the new hash with the stored hash.
+
+The Security Benefit: Even if a hacker steals the database, they only see the hashes. Because the function is one-way, they cannot easily figure out your actual password.
+
+Hashing creates a unique, fixed-size "fingerprint" for any piece of data.
+
+It is a one-way function, meaning you cannot retrieve the original data from the hash.
+
+Its primary security purposes are to verify data integrity (ensuring files are unchanged) and to safely store passwords.
+
+SHA-256 is the recommended secure algorithm, while MD5 is considered obsolete for security purposes.
+
+Digital Signatures: Proof of Origin and Integrity
+A Digital Signature is a cryptographic technique that combines hashing and asymmetric encryption to provide three crucial security services:
+
+Authentication: Verifies the identity of the sender (who signed it).
+
+Integrity: Proves the message has not been altered after it was signed.
+
+Non-Repudiation: Prevents the sender from denying they sent the message, as only they possess the private key used to create the signature.
+
+The Foundation: Combining Two Primitives
+Digital signatures are not a single algorithm but a process that uses two cryptographic primitives:
+
+A Hash Function (like SHA-256): To create a unique "fingerprint" of the message, ensuring integrity.
+
+An Asymmetric Cipher (like RSA or ECDSA): To "sign" that fingerprint in a way that only the true sender could have done, ensuring authentication and non-repudiation.
+
+How a Digital Signature is Created and Verified
+Let's follow the process with our usual cast: Alice (the sender) and Bob (the receiver).
+
+Step 1: Alice Creates the Digital Signature
+Hash the Message: Alice creates a message. She then runs this message through a pre-agreed hash function (like SHA-256) to generate a fixed-size message digest.
+
+Sign the Hash: Alice encrypts this hash digest with her private key. This encrypted hash is the digital signature.
+
+Send the Package: Alice sends the original message and the digital signature to Bob. (The message itself is not encrypted for this purpose).
+
+Step 2: Bob Verifies the Digital Signature
+Decrypt the Signature: Bob receives the message and the signature. He uses Alice's public key to decrypt the digital signature. If this step is successful, it authenticates the sender because only Alice's public key can decrypt something encrypted with her private key. This successful decryption proves the signature came from Alice.
+
+Calculate His Own Hash: Bob takes the original message he received and runs it through the same hash function (SHA-256) that Alice used, generating his own message digest.
+
+Compare the Hashes: Bob compares the hash he just calculated with the one he obtained by decrypting the signature.
+
+If they match perfectly, it proves integrity—the message was not tampered with in transit.
+
+If they do not match, the message is not trustworthy. It was either altered, or the signature was not created by Alice's private key.
+
+Why This is So Powerful
+Mallory the Attacker Cannot Succeed:
+
+If Mallory changes the message, the hash Bob calculates won't match the one in the signature.
+
+If Mallory tries to create a new signature, she can't because she doesn't have Alice's private key.
+
+If Mallory tries to send a message pretending to be Alice, she cannot sign it with Alice's private key.
+
+Non-Repudiation: Since only Alice has her private key, she cannot later deny having sent the signed message. The signature is legally binding in many contexts.
+
+Digital Signature Standards
+The process is standardized using specific algorithms:
+
+PKCS#1 (RSA): The standard for using the RSA algorithm to create digital signatures.
+
+DSA (Digital Signature Algorithm): A standard developed by the U.S. government.
+
+ECDSA (Elliptic Curve Digital Signature Algorithm): A modern, more efficient version of DSA that uses elliptic curve cryptography. It provides the same security level as RSA but with smaller, faster keys and is widely used today (e.g., in Bitcoin and many SSL/TLS certificates).
+
+Summary
+A Digital Signature is a mechanism that uses the sender's private key to sign a hash of a message, allowing anyone with the sender's public key to verify the message's origin, integrity, and authenticity. It is a cornerstone of secure digital communication and trust online.
+
+Common Asymmetric Algorithms and Key Lengths
+Asymmetric algorithms, also known as public-key cryptography, are fundamental for key exchange and digital signatures. Different algorithms provide security through different mathematical problems, which influences their efficiency and the key lengths required.
+
+RSA (Rivest-Shamir-Adleman) is the most widely recognized asymmetric algorithm. Its security is based on the practical difficulty of factoring the product of two large prime numbers. Due to this mathematical basis, RSA requires relatively long keys to be secure. A 2048-bit key is considered the current minimum standard, while 3072-bit is recommended for long-term security. RSA is versatile and can be used for both key exchange and creating digital signatures.
+
+ECC (Elliptic Curve Cryptography) is a modern alternative that provides the same level of security as RSA but with much smaller key sizes. Its security is based on the algebraic structure of elliptic curves over finite fields, a problem considered more difficult to break with current technology. For example, a 256-bit ECC key provides security roughly equivalent to a 3072-bit RSA key. This smaller key size makes ECC faster and more efficient, consuming less processing power and bandwidth. It is ideal for mobile devices and is increasingly used for digital signatures and key exchange in modern web browsers.
+
+DSA (Digital Signature Algorithm) and its modern variant ECDSA (Elliptic Curve Digital Signature Algorithm) are standards developed for creating digital signatures. A key differentiator is that DSA and ECDSA cannot be used for encryption or key exchange; they are used solely for signing data. The traditional DSA is based on the discrete logarithm problem and typically uses 2048-bit keys. ECDSA is the elliptic curve version, offering the same efficiency benefits as ECC, and is widely used in technologies like blockchain and modern SSL/TLS certificates.
+
+Common Hashing Algorithms
+Hashing algorithms create a unique, fixed-length digital fingerprint from any input data. They are crucial for verifying data integrity and securely storing passwords. The security of a hash function is measured by its resistance to collisions, where two different inputs produce the same output hash.
+
+SHA-256 is the current industry standard and is part of the SHA-2 family. It produces a 256-bit hash value and is considered highly secure against collision attacks. SHA-256 is used everywhere: for verifying file downloads, in SSL/TLS certificates, within blockchain technology, and as the core of modern password hashing systems. It has effectively replaced older, weaker algorithms.
+
+SHA-3 is the newest secure hashing standard. It was selected through a public competition and is based on a different internal structure (Keccak) than SHA-2. This makes it a robust backup option in the unlikely event a vulnerability is discovered in the SHA-2 family. It is designed for long-term security and is available in various output sizes like 256 and 512 bits.
+
+MD5 is a completely broken algorithm and is insecure for any cryptographic purpose. It produces a 128-bit hash but is highly vulnerable to collision attacks, meaning an attacker can craft two different files with the same MD5 hash. It should never be used for security-sensitive tasks and is only acceptable for basic, non-security checksums, such as checking for accidental file corruption.
+
+SHA-1 is another algorithm that is now considered completely broken. Like MD5, it is vulnerable to practical collision attacks. While it was once the standard, it has been deprecated for years. You may still find it in old legacy systems, but it must be replaced with SHA-256 in any modern security context.
+
+In summary, for asymmetric cryptography, ECC is the preferred modern choice for its efficiency, while RSA remains widely used. For hashing, SHA-256 is the secure and recommended standard for all purposes, while MD5 and SHA-1 are obsolete and must be avoided.
