@@ -1,0 +1,150 @@
+Why Lure-Based Attacks Are Effective
+If a threat actor cannot find a direct technical way into a system (a remote or local exploit), they can use a lure to trick a user into giving them access. The user, often unknowingly, becomes the tool that bypasses all technical defenses.
+
+Common Types of Lures
+Attackers use various types of attractive but malicious files and devices as lures.
+
+1. Removable Devices (The "Lost" USB Stick)
+How it works: An attacker loads malware onto a USB drive (or memory card) and strategically leaves it where an employee will find it (parking lot, lobby, etc.). This is known as a drop attack.
+
+The Lure: The natural human curiosity about the contents of a "lost" device.
+
+The Payload:
+
+Automatic Execution: In some cases, simply plugging in the drive can automatically run malware (using features like AutoRun).
+
+User Execution: More commonly, the user is tricked into opening a file on the drive, such as a document named "Employee_Salaries.xlsx" or "Q4_Layoffs.pdf," which contains malicious code.
+
+2. Executable Files (The Trojan Horse)
+How it works: Malicious code is hidden inside a program that appears to be legitimate, useful, or fun (e.g., a game, a system utility, or a cracked software installer).
+
+The Lure: The promise of a free, useful, or entertaining application.
+
+The Payload: This is the definition of Trojan Horse malware. While the program may seem to function normally, it secretly performs a malicious action in the background, such as creating a backdoor for the attacker, installing a keylogger, or encrypting files for ransom.
+
+3. Document Files (Malicious Documents)
+How it works: Attackers embed malicious code within everyday document files, such as Microsoft Word documents, Excel spreadsheets, or PDFs.
+
+The Lure: A seemingly important document, like an invoice, resume, shipping notice, or a document related to current events.
+
+The Payload:
+
+Macros: The document may prompt the user to "Enable Content" or "Enable Editing" to view it properly. Doing so runs a malicious macro (a scripting language) that downloads and installs malware.
+
+Software Exploits: The document may exploit a known vulnerability in the document viewer software (like Word or Adobe Reader) to execute code without any user interaction beyond opening the file.
+
+4. Image Files (Steganography)
+How it works: This is a more sophisticated technique where malicious code is hidden within a digital image file itself—a practice known as steganography.
+
+The Lure: A normal-looking image on a website or sent in an email.
+
+The Payload: When the image is processed by the browser or image editing software, it exploits a vulnerability to decode and execute the hidden malicious payload. The user sees only the image, making this a very stealthy attack.
+
+The Attack Surface and How to Reduce It
+Lure-based vectors target a massive and diverse attack surface because they exploit the standard tools people use every day:
+
+USB ports and card readers.
+
+Document editing software (Microsoft Office, Adobe Acrobat).
+
+Web browsers and image viewers.
+
+To reduce this attack surface, organizations must implement effective Endpoint Security Management:
+
+Security Awareness Training: Teach users to never plug in unknown USB drives and to be suspicious of unexpected email attachments.
+
+Antivirus / Anti-Malware: Software that can scan files and devices for known malicious signatures.
+
+Application Whitelisting / Execution Control: Policies that prevent unauthorized programs (like those from a USB drive) from running.
+
+Patch Management (Vulnerability Management): Keeping all software (especially Office and PDF readers) patched to close exploits that documents and images might use.
+
+Intrusion Detection Systems (IDS): Monitoring for suspicious network activity that might indicate a successful lure-based compromise.
+
+Summary
+Lure-Based Vectors are a potent threat because they bypass technical controls by manipulating the user. The defense requires a combination of technological controls (patches, antivirus) and a well-trained, vigilant human firewall to recognize and avoid the bait.
+
+Message-Based Vectors: The Delivery System for Deception
+Message-Based Vectors are the communication channels that threat actors use to deliver their lures (malicious files or links) directly to potential victims. If a lure is the baited hook, then a message-based vector is the fishing line used to cast it out.
+
+These vectors exploit an organization's need for communication, turning everyday messaging platforms into a significant part of the attack surface.
+
+Common Message-Based Vectors
+Attackers use a variety of platforms to reach their targets, each with unique characteristics and security challenges.
+
+1. Email
+How it works: The attacker sends a message with a malicious file attached or a link to a malicious website. This is the most classic and widespread message-based vector.
+
+The Social Engineering: The email uses urgency, fear, or curiosity to trick the user (e.g., "Your Invoice is Due," "Your Package Could Not Be Delivered," "You Must Review This Document").
+
+The Challenge for Defenders: While organizations can deploy email security gateways to scan attachments and links, attackers constantly evolve their tactics to bypass these filters.
+
+2. Short Message Service (SMS) - "Smishing"
+How it works: The attacker sends a text message to a mobile phone containing a malicious link or instructions to reply with sensitive information. This is often called smishing (SMS phishing).
+
+Why it's Effective:
+
+Inherent Vulnerabilities: The underlying SS7 protocol has known security flaws.
+
+Lack of Organizational Control: Companies typically have no visibility or control over SMS messages sent to employee personal or corporate phones.
+
+High Trust Factor: People often trust text messages more than emails.
+
+Example: "FedEx: Your package is held at the depot. Confirm your address here: [malicious link]"
+
+3. Instant Messaging (IM) & Collaboration Apps
+How it works: Attackers use platforms like WhatsApp, Telegram, Slack, Teams, or Discord to send malicious files or links.
+
+The Double-Edged Sword of Security:
+
+Pro: Most modern IM apps use end-to-end encryption, protecting user privacy.
+
+Con: This same encryption makes it extremely difficult for organizations to scan messages for malware, creating a blind spot for security teams.
+
+4. Web and Social Media
+How it works: Malicious content is distributed through websites and social platforms like Facebook, X (Twitter), LinkedIn, and Instagram.
+
+Methods:
+
+Malicious Ads (Malvertising): Injecting malicious code into legitimate online advertisements.
+
+Compromised Websites: A legitimate website is hacked to host malware that automatically downloads (a drive-by download) when a user visits.
+
+Fake Posts and Profiles: Attackers create fake profiles or posts that link to "must-have" software, videos, or news articles, which are actually Trojans or credential-stealing sites.
+
+Disinformation Campaigns: Spreading false information to create panic or urgency, driving people toward malicious solutions.
+
+Advanced Threat: Zero-Click Exploits
+This is the most dangerous type of message-based attack.
+
+Standard Attack: Requires the user to take an action (e.g., open the file, enable content, click the link).
+
+Zero-Click Exploit: Requires no interaction from the user. The mere act of receiving the message (which contains a specially crafted image or data) is enough to trigger the vulnerability in the device's messaging software and compromise the device. These exploits are highly valuable and are typically used in targeted espionage.
+
+Beyond Malware Delivery: Pretexting
+Message-based vectors aren't only for delivering files. They are also used for pretexting, a form of social engineering.
+
+How it works: An attacker creates a false scenario (a pretext) to manipulate a user into revealing information or weakening security.
+
+The Vector: This can be as simple as a voice call (vishing).
+
+Example: An attacker calls an employee, pretending to be from the IT help desk, and says, "We need to update your account. Please tell me your password to verify your identity."
+
+Summary: The Defense Strategy
+Message-based vectors turn communication channels into a primary threat vector. Defending against them requires a multi-layered approach:
+
+Security Awareness Training: Teach users to be suspicious of unsolicited messages across all platforms (email, SMS, IM, social media).
+
+Technical Controls:
+
+Email Filtering: Advanced threat protection for email gateways.
+
+Mobile Device Management (MDM): Policies to control apps and some aspects of mobile device security.
+
+Web Filtering: Blocking access to known malicious websites.
+
+Endpoint Detection and Response (EDR): Monitoring systems for malicious activity that bypasses other defenses.
+
+Patching: Keep all software, especially operating systems, messaging apps, and browsers, updated to mitigate against zero-click and drive-by exploits.
+
+Verification Procedures: Establish protocols for verifying unusual requests, especially those involving passwords or financial transactions, via a separate, trusted channel.
