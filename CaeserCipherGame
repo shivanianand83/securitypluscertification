@@ -1,0 +1,211 @@
+Python code 
+
+
+Features of this Caesar Cipher Game:
+Basic Mode:
+Get Shift Key: Enter a number between 0-25 for the cipher shift
+
+Choose Operation: Encrypt or decrypt
+
+Enter Text: Input your plaintext or ciphertext
+
+See Results: View the converted text with clear formatting
+
+Play Again: Continue or exit the game
+
+Advanced Mode:
+All basic features plus:
+
+Brute Force Attack: See all 26 possible decryptions when you don't know the shift key
+
+Menu-driven Interface: Easy navigation between options
+
+How to Use:
+Copy and paste the entire code into a Python file (e.g., caesar_cipher_game.py)
+
+Run the script: python caesar_cipher_game.py
+
+Follow the prompts to encrypt or decrypt messages
+
+def caesar_cipher(text, shift, mode='encrypt'):
+    """
+    Encrypt or decrypt text using Caesar Cipher
+    
+    Args:
+        text (str): The text to encrypt/decrypt
+        shift (int): The number of positions to shift
+        mode (str): 'encrypt' or 'decrypt'
+    
+    Returns:
+        str: The encrypted or decrypted text
+    """
+    result = ""
+    
+    # For decryption, we reverse the shift
+    if mode == 'decrypt':
+        shift = -shift
+    
+    for char in text:
+        if char.isalpha():
+            # Determine if it's uppercase or lowercase
+            ascii_offset = ord('A') if char.isupper() else ord('a')
+            # Apply the shift and wrap around using modulo 26
+            shifted_char = chr((ord(char) - ascii_offset + shift) % 26 + ascii_offset)
+            result += shifted_char
+        else:
+            # Keep non-alphabetic characters as they are
+            result += char
+    
+    return result
+
+def get_shift_key():
+    """Get and validate the shift key from user"""
+    while True:
+        try:
+            shift = int(input("Enter the shift key (0-25): "))
+            if 0 <= shift <= 25:
+                return shift
+            else:
+                print("Please enter a number between 0 and 25.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+def get_operation_mode():
+    """Let user choose between encryption and decryption"""
+    while True:
+        print("\nChoose operation:")
+        print("1. Encrypt (plaintext to ciphertext)")
+        print("2. Decrypt (ciphertext to plaintext)")
+        choice = input("Enter your choice (1 or 2): ").strip()
+        
+        if choice == '1':
+            return 'encrypt'
+        elif choice == '2':
+            return 'decrypt'
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+
+def get_text_input(mode):
+    """Get text input from user based on mode"""
+    if mode == 'encrypt':
+        prompt = "Enter the plaintext to encrypt: "
+    else:
+        prompt = "Enter the ciphertext to decrypt: "
+    
+    return input(prompt)
+
+def display_result(original_text, result_text, mode, shift):
+    """Display the input and result in a formatted way"""
+    print("\n" + "="*50)
+    if mode == 'encrypt':
+        print("ENCRYPTION RESULTS:")
+        print(f"Plaintext:  {original_text}")
+        print(f"Ciphertext: {result_text}")
+    else:
+        print("DECRYPTION RESULTS:")
+        print(f"Ciphertext: {original_text}")
+        print(f"Plaintext:  {result_text}")
+    print(f"Shift key:  {shift}")
+    print("="*50)
+
+def main():
+    """Main game function"""
+    print("="*60)
+    print("           WELCOME TO THE CAESAR CIPHER GAME")
+    print("="*60)
+    
+    while True:
+        try:
+            # Get the shift key
+            shift = get_shift_key()
+            
+            # Get the operation mode
+            mode = get_operation_mode()
+            
+            # Get the text to process
+            text = get_text_input(mode)
+            
+            # Perform encryption/decryption
+            result = caesar_cipher(text, shift, mode)
+            
+            # Display the result
+            display_result(text, result, mode, shift)
+            
+            # Ask if user wants to continue
+            while True:
+                continue_choice = input("\nWould you like to play again? (y/n): ").strip().lower()
+                if continue_choice in ['y', 'yes']:
+                    print("\n" + "-"*40)
+                    break
+                elif continue_choice in ['n', 'no']:
+                    print("\nThank you for playing the Caesar Cipher Game! Goodbye!")
+                    return
+                else:
+                    print("Please enter 'y' or 'n'.")
+                    
+        except KeyboardInterrupt:
+            print("\n\nGame interrupted. Thank you for playing!")
+            return
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            print("Let's try again...\n")
+
+# Additional feature: Brute force decryption
+def brute_force_decrypt(ciphertext):
+    """Show all possible decryptions for unknown shift"""
+    print("\n" + "="*60)
+    print("BRUTE FORCE DECRYPTION (All possible shifts)")
+    print("="*60)
+    
+    for shift in range(26):
+        decrypted = caesar_cipher(ciphertext, shift, 'decrypt')
+        print(f"Shift {shift:2d}: {decrypted}")
+
+def advanced_mode():
+    """Advanced mode with brute force option"""
+    print("\n" + "="*60)
+    print("           ADVANCED CAESAR CIPHER MODE")
+    print("="*60)
+    
+    while True:
+        print("\nAdvanced Options:")
+        print("1. Encrypt with known key")
+        print("2. Decrypt with known key") 
+        print("3. Brute force decrypt (unknown key)")
+        print("4. Return to main menu")
+        
+        choice = input("Enter your choice (1-4): ").strip()
+        
+        if choice == '1':
+            shift = get_shift_key()
+            text = input("Enter plaintext to encrypt: ")
+            result = caesar_cipher(text, shift, 'encrypt')
+            display_result(text, result, 'encrypt', shift)
+            
+        elif choice == '2':
+            shift = get_shift_key()
+            text = input("Enter ciphertext to decrypt: ")
+            result = caesar_cipher(text, shift, 'decrypt')
+            display_result(text, result, 'decrypt', shift)
+            
+        elif choice == '3':
+            text = input("Enter ciphertext for brute force decryption: ")
+            brute_force_decrypt(text)
+            
+        elif choice == '4':
+            return
+        else:
+            print("Invalid choice. Please enter 1-4.")
+
+if __name__ == "__main__":
+    # Choose between basic and advanced mode
+    print("Choose game mode:")
+    print("1. Basic Caesar Cipher Game")
+    print("2. Advanced Mode (with brute force)")
+    
+    mode_choice = input("Enter your choice (1 or 2): ").strip()
+    
+    if mode_choice == '2':
+        advanced_mode()
+    else:
+        main()
