@@ -1,0 +1,51 @@
+Summary of the Snowflake Customer Campaign (UNC5537)
+This blog post from Google Cloud's Threat Intelligence team provides a detailed analysis of the widespread cyberattacks targeting customers of the Snowflake data platform.
+Key Takeaways:
+
+The Culprit: The campaign is attributed to a financially motivated cybercriminal threat group tracked as UNC5537.
+
+The Method: Credential Stuffing, Not a Platform Breach
+
+The primary attack vector was credential stuffing. Attackers used usernames and passwords stolen from previous infostealer malware infections to log into Snowflake customer accounts.
+
+Crucially, this was not a vulnerability or breach of Snowflake's platform itself. The attackers exploited the fact that the targeted accounts did not have Multi-Factor Authentication (MFA) enabled.
+
+Infostealer Malware as the Entry Point:
+
+The credentials were harvested from infected employee computers over several months. The main infostealers involved were:
+
+Raccoon Stealer
+
+Vidar
+
+Lumma
+
+These malware families steal saved credentials from browsers and password managers.
+
+Systemic Nature of the Attack:
+
+The attackers compiled a massive list of stolen credentials and then systematically tested them against Snowflake customer portals. They specifically targeted accounts without MFA.
+
+This was not a targeted attack on a single company, but a large-scale campaign against any vulnerable Snowflake customer.
+
+Attacker Actions Post-Compromise:
+
+Once inside a Snowflake instance, the attackers exfiltrated (downloaded) massive volumes of customer data.
+
+They then engaged in extortion, threatening to publish or sell the stolen data unless a ransom was paid.
+
+Link to Other Incidents:
+
+The attacks against Ticketmaster and Santander Bank were confirmed to be part of this same campaign.
+
+Conclusion and Recommendations:
+
+The Google Cloud blog emphasizes that this incident underscores the critical importance of foundational security practices for cloud environments. The primary recommendation for all organizations, especially Snowflake customers, is to:
+
+Mandate and enforce Multi-Factor Authentication (MFA) for all user accounts, without exception.
+
+Monitor for infostealer infections within their corporate environments, as these are often the source of credential theft.
+
+Implement continuous monitoring of their cloud data platforms for unusual activity, such as logins from unfamiliar locations or large data downloads.
+
+In essence, the attack was successful not because of a technical flaw in Snowflake, but because of the exploitation of weak identity and access management (IAM) controls by the customers themselves.
