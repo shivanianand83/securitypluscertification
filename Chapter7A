@@ -1,0 +1,202 @@
+Lesson Introduction: Core Concepts
+Asset Management is the foundation of cybersecurity. It involves knowing all your organization's valuable items (hardware, software, data) so you can prioritize protecting the most critical ones from threats.
+
+Security Architecture Resilience means designing systems to withstand and recover quickly from attacks or failures. This involves using redundant components and having strong recovery plans to minimize disruption.
+
+Physical Security protects physical items like people, hardware, and facilities from real-world threats. Measures include locks, badges, and cameras. It's crucial because a physical breach can bypass digital security entirely.
+
+Together, these three areas form a comprehensive defense, supporting overall cybersecurity operations and ensuring business continuity during disruptive events.
+
+Lesson Objectives
+In this lesson, you will:
+
+Review key concepts for backing up data.
+
+Learn the practices for managing organizational assets.
+
+Explore strategies for keeping systems highly available and resilient.
+
+Review the fundamental concepts of physical security.
+
+Asset Management
+Purpose: It is the process of identifying, classifying, and tracking all IT assets (hardware, software, data, personnel) to understand the IT infrastructure and secure it effectively.
+
+Importance: It allows organizations to monitor for unauthorized activity, find vulnerabilities, ensure systems are patched, and quickly isolate affected assets during a security incident.
+
+Asset Tracking
+This involves creating and maintaining a detailed inventory of all critical assets.
+
+Specialized software is used to store information like asset type, model, serial number, location, user, and value.
+
+Asset Assignment and Monitoring
+Ownership Assignment: Each asset should have a designated owner responsible for its security and maintenance, creating clear accountability.
+
+Asset Classification: Assets are categorized based on their value and sensitivity, which determines the level of security controls applied to them.
+
+Monitoring & Inventory: This is the ongoing process of keeping the asset list accurate and up-to-date. It is vital for tasks like patch management and incident response.
+
+Methods for Asset Discovery (Enumeration)
+Manual Inventory: Physically inspecting and recording assets; feasible for small organizations.
+
+Network Scanning: Using tools like Nmap to automatically discover devices connected to the network.
+
+Asset Management Software: Using dedicated platforms (e.g., Lansweeper) to automatically track and catalog assets.
+
+Configuration Management Database (CMDB): A central system that stores all information about IT assets and their relationships.
+
+Mobile Device Management (MDM): Solutions for enumerating and securing mobile devices like smartphones and tablets.
+
+Cloud Asset Discovery: Using cloud provider tools to find and catalog assets in cloud environments like AWS or Azure.
+
+Asset Acquisition/Procurement
+When acquiring new assets, security must be a priority.
+
+Key considerations include choosing products with strong built-in security features, buying from reputable vendors, and ensuring new assets can integrate with existing security systems.
+
+Organizations should also consider the Total Cost of Ownership (TCO), which includes long-term maintenance and potential security costs, not just the initial purchase price.
+
+Asset Protection and Identification
+Assets are anything of value that must be protected from threats.
+
+Physical Identification: Tangible assets can be tagged with barcodes or RFID chips for tracking and theft prevention.
+
+Naming Conventions: Using a standard naming system for all assets (both physical and digital) makes the environment more consistent and manageable.
+
+Configuration Management
+This ensures that assets maintain their approved and secure settings.
+
+Configuration Item (CI): Any asset that needs to be carefully managed to deliver a service.
+
+Baseline Configuration: A set of mandatory security settings that a device or software must have.
+
+Configuration Management Database (CMDB): The database where all information about CIs is stored.
+
+Diagrams: Used to visualize the complex relationships between different network assets.
+
+Data Backups
+Role: Backups protect assets by ensuring data can be recovered after events like hardware failure, data corruption, or cyberattacks (e.g., ransomware).
+
+Enterprise Needs: Simple backup methods are not enough for large organizations. They need solutions that are scalable, performant, and offer features like encryption and granular recovery.
+
+Key Backup Features for Enterprises
+Support for virtual, physical, and cloud environments.
+
+Data deduplication and compression to save storage space.
+
+Fast recovery and replication capabilities.
+
+Built-in ransomware protection and encryption.
+
+The ability to restore individual files or entire applications.
+
+Centralized management and reporting tools.
+
+Backup Frequency
+How often you back up data depends on factors like how often the data changes, regulatory requirements, and system performance.
+
+Organizations with highly dynamic data or strict rules need more frequent backups.
+
+On-Site vs. Off-Site Backups
+On-Site Backups: Stored locally for fast recovery from common issues like hardware failure.
+
+Off-Site Backups: Stored in a remote location to protect against physical disasters (fire, flood) or catastrophic attacks like ransomware that could destroy local backups.
+
+Air-Gapped Backups: A best practice where backups are physically disconnected from the network, making them inaccessible to ransomware.
+
+Recovery Validation
+It is critical to regularly test backups to ensure they work when needed.
+
+Techniques include:
+
+Full Recovery Test: Restoring an entire system to a separate environment to verify it works.
+
+Partial Recovery Test: Restoring specific files or databases to check their integrity.
+
+Disaster Recovery Drills: Simulating real-world failure scenarios to test preparedness.
+
+Advanced Data Protection
+Snapshots
+A snapshot captures the state of a system at a single point in time, allowing for quick rollbacks.
+
+Types:
+
+VM Snapshots: Capture the entire state of a virtual machine.
+
+Filesystem Snapshots: Capture the state of a file system, allowing recovery of previous file versions.
+
+SAN Snapshots: Capture the state of an entire storage volume for rapid recovery of large datasets.
+
+Replication and Journaling
+Replication: Maintains an exact, live copy of data on a separate system. If the primary system fails, operations can switch to the replica with minimal downtime. Examples include database mirroring and VM replication.
+
+Journaling: Keeps a log (journal) of all changes made to data. If a system crashes, the journal can be used to undo incomplete transactions or replay recent changes, minimizing data loss.
+
+Encrypting Backups
+Purpose: Backup encryption is essential for security, privacy, and compliance.
+
+Why it's critical: Backup files often contain sensitive data. Encrypting them ensures that even if the backup media is stolen, the data remains unreadable without the decryption key.
+
+It also helps organizations meet legal and regulatory requirements for data protection.
+
+Secure Data Destruction
+Purpose: Data destruction is the process of permanently eliminating data stored on storage media to ensure it cannot be recovered. This is done for security, legal compliance, and efficient resource management.
+
+Reasons for Data Destruction:
+
+End of Retention Period: Organizations must destroy data that has reached the end of its legally or internally mandated retention period.
+
+Legal & Regulatory Compliance: Laws like GDPR and HIPAA require organizations to delete personal or sensitive data when it is no longer needed or when requested by an individual.
+
+Storage Optimization: Destroying obsolete data helps free up storage space and reduces the complexity of data management.
+
+Risk Reduction: Eliminating old, unnecessary data minimizes the potential impact of a data breach.
+
+Device Decommissioning: Before disposing of, recycling, or repurposing storage devices (like hard drives), any residual data must be completely destroyed to prevent unauthorized access.
+
+Methods Vary by Media Type:
+
+For Hard Disk Drives (HDDs):
+
+Data Wiping/Overwriting: This is the standard method, which involves writing new data (like all zeros or random patterns) over the existing data.
+
+Effectiveness: A single overwrite is often sufficient, but historically, a "three-pass" method (zeros, ones, random) was used for higher security. Modern standards like NIST SP 800-88 guide current practices.
+
+For Solid-State Drives (SSDs):
+
+Challenge: Traditional overwriting is less reliable due to SSD features like "wear leveling," which can leave data in inaccessible memory blocks.
+
+Recommended Method: Use built-in commands like ATA Secure Erase. This command instructs the drive's firmware to electronically reset all memory cells, effectively sanitizing the entire drive, including areas that software cannot directly overwrite.
+
+Asset Disposal / Decommissioning
+This is the broader process of securely retiring assets, with a critical focus on the data they contain.
+
+Sanitization:
+
+This is the process of removing sensitive data from storage media so it cannot be retrieved.
+
+It is used when the device itself will be reused, repurposed, or donated.
+
+Methods include data wiping (overwriting), degaussing (for magnetic media), and cryptographic erasure (rendering encrypted data unrecoverable by deleting the key).
+
+Destruction:
+
+This is the process of physically damaging the storage media to make the data irrecoverable.
+
+It is used when the device has reached the end of its useful life and is being discarded or recycled.
+
+Methods include shredding, crushing, disintegrating, or incinerating the device.
+
+Certification:
+
+This is the formal documentation and verification that data sanitization or destruction was performed correctly and in line with standards.
+
+It often involves obtaining a Certificate of Destruction from a third-party service provider, which serves as proof of due diligence.
+
+This certification is crucial for legal compliance and audits, providing evidence that the organization took proper steps to protect sensitive information.
+
+Important Technical Notes
+Deleting vs. Destroying: Simply deleting a file or formatting a drive does not erase the data. It only removes the pointer to the file and marks the space as available. The actual data remains on the disk until it is overwritten.
+
+Overwriting Time: The process of overwriting a drive can be very time-consuming, especially with multiple passes and for large-capacity drives.
+
+Standards Evolution: Practices have evolved. While the "DoD three-pass wipe" was once a common standard, most organizations now follow the more modern and practical guidelines from NIST Special Publication 800-88.
