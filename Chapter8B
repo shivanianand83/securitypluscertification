@@ -1,0 +1,218 @@
+1. Overview of Web & Cloud Application Vulnerabilities
+Unique Challenges: Web and cloud applications face specific security problems that stem from their nature.
+
+Primary Causes: These vulnerabilities often arise from misconfigurations, insecure code, and the use of third-party components with known weaknesses.
+
+Attacker Goals: Attackers exploit these weaknesses to steal data, disrupt services, or take over entire systems.
+
+Cloud Complexity: In cloud environments, the shared responsibility model (where the provider and customer each have security duties) and multi-tenancy (hosting multiple customers on the same infrastructure) make security management more complex.
+
+Mitigation Strategies: To combat these threats, organizations must use secure coding practices, perform regular vulnerability assessments, implement strong access controls, keep components updated, and follow cloud provider security guides.
+
+2. Specific Application Vulnerability Types
+A. Race Condition (TOCTOU)
+Definition: A flaw where the outcome of a process depends on the unpredictable sequence or timing of uncontrollable events.
+
+Core Problem: It occurs when two or more operations need to happen in a specific order, but the software fails to enforce this.
+
+TOCTOU Vulnerability: A common type of race condition where a system's state changes between the moment a condition is checked (e.g., "does the user have permission?") and the moment that check is used (e.g., "execute the command").
+
+Example: In a banking app, one thread checks an account balance while another processes a withdrawal. An attacker could manipulate the timing to cause an overdraw.
+
+Real-World Cases: The Dirty COW Linux vulnerability and a Microsoft Windows SMB vulnerability are famous examples that allowed attackers to gain higher privileges.
+
+Mitigation: Use atomic operations (which complete as a single, uninterruptible step), locks, semaphores, and monitors to control access to shared resources.
+
+B. Memory Injection
+Definition: A flaw that allows an attacker to insert and execute malicious code within a running application's memory.
+
+Impact: This can lead to malware installation, data theft, or creating a backdoor for future access. The malicious code runs with the same permissions as the compromised application.
+
+Common Types: Includes Buffer Overflow and Format String vulnerabilities.
+
+Mitigation: Use input validation, secure coding practices, access controls, and security testing.
+
+C. Buffer Overflow
+Definition: A specific type of memory injection where an attacker sends more data than a memory buffer can hold, overflowing into adjacent memory.
+
+Mechanism: By overflowing the buffer, an attacker can overwrite a return address (the instruction telling the program where to go next), redirecting execution to their own malicious code.
+
+Mitigation: Modern systems use Address Space Layout Randomization (ASLR) and Data Execution Prevention (DEP). Using type-safe programming languages also helps prevent these vulnerabilities.
+
+D. Malicious Update
+Definition: An attack where a software update that appears legitimate is actually tampered with to contain malicious code.
+
+Significance: This is highly effective because users inherently trust updates.
+
+Real-World Cases:
+
+CCleaner (2017): A compromised update infected millions of users with malware.
+
+SolarWinds (2020): A malicious update to the Orion platform created a backdoor in numerous government and corporate networks.
+
+Mitigation: Use digital signature verification to ensure update authenticity and practice secure software supply chain management.
+
+3. Vulnerability Evaluation Scope
+Definition: The "scope" is the defined boundary of what is being tested for security vulnerabilities, such as a specific application, network, or entire infrastructure.
+
+Goal: The objective is to identify weaknesses to mitigate risk, improve security, and ensure compliance.
+
+Evaluation Methods:
+
+Security Testing: Using tools and techniques to find weaknesses.
+
+Documentation Review: Checking design specs and policies for security alignment.
+
+Source Code Analysis: Manually or automatically reviewing code for errors.
+
+Configuration Assessment: Ensuring settings follow security best practices.
+
+Cryptographic Analysis: Verifying the proper use of encryption.
+
+Compliance Verification: Checking adherence to regulations and standards.
+
+Security Architecture Review: Identifying design-level flaws in security controls.
+
+Penetration Tester vs. Attacker Perspective on Scope
+Penetration Tester: Has an authorized scope they are permitted to test. They aim to find vulnerabilities to help the organization improve its security.
+
+Attacker: Has a target scope they wish to compromise. They aim to exploit vulnerabilities for malicious purposes like data theft or system takeover.
+
+Commonality: Both parties benefit from a deep understanding of the target's architecture, components, and potential weaknesses to focus their efforts effectively.
+
+4. Web Application Attacks
+Definition: Attacks that specifically target internet-accessible applications by exploiting their vulnerabilities.
+
+Key Characteristic: They often exploit poor input validation.
+
+Unique Challenge: Web applications must manage user "state" (sessions) over the stateless HTTP protocol, using mechanisms like cookies and session IDs. Flaws in this session management are a common attack vector.
+
+A. Cross-Site Scripting (XSS)
+Core Concept: An attack that exploits the trust a user's browser has in a website. The attacker injects a malicious script that runs as if it came from the trusted site.
+
+Impact: The malicious script can steal cookies, hijack sessions, deface websites, or redirect users to malicious sites.
+
+Types of XSS:
+
+Reflected (Non-persistent): The malicious script is embedded in a URL. The victim clicks the link, and the script is "reflected" off the web server and executes in their browser.
+
+Stored (Persistent): The malicious script is saved on the website's server (e.g., in a forum post). It then executes in the browser of every user who views that content.
+
+DOM-based: The vulnerability exists in the client-side code (JavaScript) that manipulates the webpage's Document Object Model (DOM). The malicious payload is executed as the page is rendered, without needing to contact the server.
+
+B. SQL Injection (SQLi)
+Core Concept: An attack where an attacker inserts malicious SQL code into a user input field, tricking the application into executing unintended database commands.
+1. Cloud-Based Application Attacks
+A. Core Concept & Characteristics
+Definition: These are attacks that specifically target applications and infrastructure hosted on cloud platforms.
+
+Primary Attack Vectors: They exploit misconfigurations, weak authentication, poor network segmentation, and flawed access controls in the cloud environment.
+
+Unique Cloud Challenges:
+
+Shared Responsibility Confusion: Uncertainty over whether the cloud provider or the customer is responsible for securing a specific component can create security gaps.
+
+Increased Attack Surface: The cloud's accessibility and scalability make it an attractive target. A single vulnerability can potentially grant access to a vast pool of resources.
+
+New Attack Types: The cloud introduces unique threats like side-channel attacks and cryptojacking.
+
+B. Specific Cloud Attack Types
+Side-Channel Attacks: An attacker deploys a malicious instance on the same physical server as the target. They then attempt to steal information by analyzing the shared hardware resources (like CPU cache).
+
+Misconfigured Cloud Storage: Attackers scan for and access poorly secured cloud storage buckets (e.g., on AWS S3 or Azure Blob Storage) that are accidentally set to be publicly accessible, leading to massive data breaches.
+
+Cryptojacking: An attacker hijacks a customer's cloud computing resources to mine cryptocurrency without their knowledge. This causes performance degradation and leads to unexpectedly high cloud bills for the victim.
+
+C. Cloud as an Attack Platform
+Attackers themselves use the cloud's ease-of-use and reliability to host their malicious activities.
+
+They use cloud services to host phishing websites that mimic legitimate sites and to store and distribute malware.
+
+2. Cloud Access Security Broker (CASB)
+A. What is a CASB?
+CASB is enterprise software that acts as a gatekeeper or policy enforcement point between an organization's users and the cloud services they access.
+
+It provides visibility and control over cloud application usage across all devices.
+
+B. Key Functions of a CASB
+Access Control: Enforces single sign-on (SSO) and authorization policies for cloud access.
+
+Threat Prevention: Scans for malware and blocks access from non-compliant or rogue devices.
+
+Activity Monitoring: Audits user and resource activity within cloud services.
+
+Data Loss Prevention (DLP): Mitigates data exfiltration by preventing users from uploading sensitive data to unauthorized cloud services.
+
+C. CASB Implementation Methods
+Forward Proxy: A gateway positioned at the edge of the corporate network that inspects all outbound traffic to the cloud in real-time.
+
+Advantage: Can inspect traffic to both sanctioned and unsanctioned cloud apps.
+
+Disadvantage: Can become a performance bottleneck and may not cover users outside the corporate network.
+
+Reverse Proxy: Positioned at the cloud provider's edge, it intercepts and inspects incoming traffic before it reaches the cloud service.
+
+Advantage: No client configuration is needed.
+
+Disadvantage: Only works with cloud applications that support proxy integration.
+
+API-Based: The CASB connects directly to the cloud service's API instead of sitting in the network path.
+
+Advantage: Does not affect network performance and can manage data already stored in the cloud.
+
+Disadvantage: Limited to the security functions the cloud service's API supports.
+
+Note: Modern CASB solutions often use a combination of these methods for comprehensive coverage.
+
+3. Software Supply Chain Vulnerabilities
+A. Core Concept
+The software supply chain encompasses all stages of a software product's lifecycle, from development to distribution and maintenance.
+
+Vulnerabilities are risks introduced at any point in this chain by the various third-party providers involved.
+
+B. Sources of Supply Chain Vulnerabilities
+Service Providers (e.g., Cloud, DevOps): Inadequate security measures in development platforms or unsecured communication channels can introduce flaws.
+
+Hardware Suppliers: Compromised hardware, firmware with known vulnerabilities, or insecure device drivers create a weak foundation that all software runs on. This is a critical risk for IoT and embedded systems.
+
+Software Providers (Libraries & Frameworks): This is the most common source. Using third-party code components with vulnerabilities or that are outdated exposes the entire application to attacks.
+
+4. Software Bill of Materials (SBOM)
+A. What is an SBOM?
+An SBOM is a formal, nested inventory of all components and libraries used in a software product.
+
+It acts like a "list of ingredients," detailing component names, versions, and their suppliers.
+
+B. Purpose and Benefits of an SBOM
+Transparency: Provides clear visibility into what software is actually made of.
+
+Vulnerability Management: Allows teams to quickly identify if they are using a third-party component with a newly disclosed vulnerability.
+
+Rapid Response: In the event of a security incident (like the SolarWinds attack), an SBOM lets you instantly see if your products are affected, drastically speeding up remediation.
+
+Proactive Security: Shifts security from a reactive to a proactive posture by enabling continuous monitoring of component health.
+
+5. SBOM Tools and Standards
+A. OWASP Dependency-Check
+This is a Software Composition Analysis (SCA) tool.
+
+Its primary function is to scan a project's dependencies and check them against databases of known vulnerabilities.
+
+It can generate a report of all components and their versions, which serves as a good foundation for an SBOM.
+
+Limitation: It is focused on security vulnerabilities and may not include other SBOM data like licensing information.
+
+B. Dedicated SBOM Standards and Tools
+For a full, production-ready SBOM, dedicated tools and standards are used.
+
+OWASP Dependency-Track: A tool that consumes SBOMs to proactively monitor components for new vulnerabilities.
+
+Key Standards:
+
+SPDX (Software Package Data Exchange): A comprehensive, open standard for communicating SBOM information.
+
+CycloneDX: A lightweight SBOM standard from OWASP, designed for modern DevOps and security workflows.
+
+Impact: This can allow attackers to view, modify, or delete database records, bypass authentication, or even run system commands.
+
+Example: An application uses the input Bob to create the query: SELECT * FROM users WHERE username = 'Bob'. An attacker inputs ' or 1=1#, which changes the query to SELECT * FROM users WHERE username = '' or 1=1#. Because 1=1 is always true, this could return every user in the database.
