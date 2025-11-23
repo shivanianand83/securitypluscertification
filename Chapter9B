@@ -1,0 +1,124 @@
+Firewalls
+A firewall acts as the primary gatekeeper between a trusted internal network and an untrusted external network (like the Internet).
+
+Its core function is to monitor and control network traffic based on a predefined set of rules, deciding whether to allow or block data packets.
+
+Firewall rules are processed in order, from top to bottom. The first rule that matches a packet is applied, and processing stops.
+
+A fundamental principle is the "implicit deny," where any traffic not explicitly permitted by a previous rule is automatically blocked at the end.
+
+Rules can be based on various packet attributes, such as source/destination IP addresses, port numbers, and the protocol used (like TCP or UDP).
+
+For example, a firewall can be configured to only allow inbound traffic to a web server on ports 80 (HTTP) and 443 (HTTPS), blocking all other incoming connection attempts.
+
+Access Control Lists (ACLs)
+An Access Control List (ACL) is a specific list of permissions attached to a network device (like a router or switch) to control traffic at the interface level.
+
+ACLs use information from data packets, such as IP addresses and port numbers, to permit or deny traffic.
+
+While firewall rules are a type of ACL, the term "ACL" is often used for simpler, network-layer filtering on routers and switches, whereas modern firewalls can perform more advanced, application-level inspection.
+
+Screened Subnet (DMZ)
+A screened subnet, also known as a demilitarized zone (DMZ), is a separate, isolated network segment that sits between the Internet and the internal network.
+
+It acts as a neutral zone to host public-facing services like web, email, or DNS servers.
+
+This architecture uses two firewalls: one between the Internet and the screened subnet, and another between the screened subnet and the internal network.
+
+The outer firewall is configured to allow public traffic only to the services in the screened subnet. The inner firewall is very restrictive, blocking almost all traffic from the screened subnet to the internal network.
+
+The key benefit is that if a server in the screened subnet is compromised, the attacker is still isolated from the sensitive internal network.
+
+Intrusion Detection Systems (IDS) and Intrusion Prevention Systems (IPS)
+IDS (Intrusion Detection System): An IDS is a monitoring system that scans network traffic or host activities for suspicious patterns. When it detects a potential threat, it generates an alert for administrators. It is a passive, "detect-and-alert" system.
+
+IPS (Intrusion Prevention System): An IPS includes all the detection capabilities of an IDS but can also take automatic action to block the threat, such as dropping malicious packets or resetting connections. It is an active, "detect-and-prevent" system.
+
+Host-based (HIDS/HIPS): These are installed on individual computers or servers. They monitor system-level activities, such as file changes, logins, and running processes, making them effective against insider threats.
+
+Network-based (NIDS/NIPS): These monitor raw network traffic flowing across the network. They are effective at detecting widespread threats like DDoS attacks or network scans.
+
+IDS/IPS Detection Methods
+Signature-Based Detection: This method relies on a database of known attack patterns (signatures). It is excellent at detecting known threats but cannot identify new, "zero-day" attacks for which a signature does not yet exist.
+
+Behavioral/Anomaly-Based Detection: This method learns what constitutes "normal" behavior for the network or host. It then generates alerts when it detects significant deviations from this established baseline. This allows it to detect novel attacks and insider threats, though it can generate false positives while it learns.
+
+Protocol Analysis: This is a specific form of anomaly detection where the system analyzes network traffic for deviations from official communication standards (RFCs), flagging non-compliant packets as potentially malicious.
+
+Key Tools
+Snort: A widely-used, open-source IDS/IPS that uses a powerful rule-based language for detection.
+
+Suricata: A high-performance, open-source IDS/IPS engine that is compatible with Snort rules and designed to handle modern high-speed networks.
+
+Security Onion: A complete Linux distribution that integrates Snort, Suricata, and other tools into a unified platform for intrusion detection and network security monitoring.
+
+Trend Analysis
+Trend analysis involves reviewing IDS/IPS alerts and logs over time to identify patterns.
+
+It helps security teams spot emerging threats, tune systems to reduce false positives, and understand which parts of the network are most frequently targeted, guiding strategic security improvements.
+
+Web Filters
+Web filters control the content that users can access on the Internet.
+
+They work by blocking access to known malicious websites, preventing the download of harmful files, and enforcing an organization's acceptable use policies.
+
+This layer of security is crucial for preventing malware infections, protecting sensitive data from being exfiltrated, and maintaining productivity.
+
+In summary, these components form a layered defense: the firewall acts as a gatekeeper, ACLs provide basic traffic control, a screened subnet isolates public services, IDS/IPS monitor for and stop attacks, and web filters control web content. Together, they create a robust security infrastructure that protects an organization from a wide array of threats.
+Core Concept of Web Filtering
+Web filtering is a security technique that controls the websites and online content users can access from a network.
+
+Its primary purpose is to block access to malicious or inappropriate websites to protect the network from threats and enforce company policies.
+
+It works by analyzing web requests in real-time and allowing or blocking them based on criteria like the website's URL, its content category, its reputation, or specific keywords.
+
+Key Benefits and Reasons for Use
+Threat Prevention: It is a crucial defense against malware, ransomware, and phishing attacks by blocking access to the malicious websites that host these threats.
+
+Productivity Management: It can increase employee productivity by limiting access to non-work-related sites like social media or entertainment.
+
+Legal and Liability Protection: It helps limit legal liability by preventing access to inappropriate, offensive, or illegal content.
+
+Data Loss Prevention (DLP): It supports DLP strategies by blocking file transfers to or from websites known for data leakage.
+
+Agent-Based Filtering
+This method involves installing a small software program (an "agent") directly on each user's device (laptop, desktop, mobile).
+
+The key advantage is that the filtering policy travels with the device. It remains enforced even when the user is off the corporate network, such as at home or a coffee shop.
+
+The agent communicates with a central cloud service to update its filtering rules and report back on web activity.
+
+It often allows for very granular control, such as applying different rules to different applications or inspecting encrypted (HTTPS) traffic directly on the device.
+
+Centralized Web Filtering (Proxy Server)
+This method uses a central server (a proxy) that acts as a gateway between all users inside the network and the Internet.
+
+All web traffic is routed through this single point, where it is inspected and filtered according to organizational policies.
+
+Techniques used by centralized proxies include:
+
+URL Scanning: Blocking access to specific web addresses known to be malicious or inappropriate.
+
+Content Categorization: Allowing or blocking access based on a website's category (e.g., "Social Media," "Gambling," "Webmail").
+
+Block Rules: Creating rules based on domains, IP addresses, or even keywords within the web page's content.
+
+Reputation-Based Filtering: Using constantly updated databases to automatically block websites with a poor reputation for hosting malware or phishing.
+
+Challenges and Issues with Web Filtering
+Overblocking: When the filter is too strict and incorrectly blocks legitimate websites that users need, hindering their work.
+
+Underblocking: When the filter fails to block a harmful or inappropriate site, leaving the network vulnerable.
+
+Encrypted Traffic (HTTPS): Inspecting modern encrypted web traffic requires extra configuration and can introduce performance overhead.
+
+Privacy Concerns: Logging and monitoring employee web activity is essential for security but must be balanced with user privacy and comply with local laws and regulations.
+
+Guidelines for Implementation
+Select a filtering policy based on the organization's specific risk profile and needs.
+
+Use automation tools to deploy and manage filtering policies consistently across all devices.
+
+Integrate web filtering with other security layers like firewalls and IDS/IPS for a comprehensive defense.
+
+Carefully configure the system to handle HTTPS inspection while being mindful of the performance and privacy implications.
