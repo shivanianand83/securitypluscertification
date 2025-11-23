@@ -1,0 +1,236 @@
+Lesson Introduction: Core Concepts
+The lesson establishes that protecting a network is a multi-layered process built on four foundational ideas:
+
+Secure Baselines: This is the "rulebook" for security. It's a standardized set of security configurations that every device and system in the organization must follow. Think of it as the minimum security standard that ensures no device is left vulnerable due to misconfiguration.
+
+Hardening: This is the action of applying the secure baseline. It's the process of making a system more secure than it was "out of the box" by removing unnecessary features, tightening settings, and changing defaults to make it resistant to attacks.
+
+Wireless Security: This focuses specifically on securing the wireless network, which is a common entry point for attackers. It involves using strong encryption (like WPA3), secure authentication methods, and monitoring for unauthorized wireless devices.
+
+Network Access Control (NAC): This is the "bouncer" for your network. NAC checks every device that tries to connect to ensure it meets the security rules (the secure baseline) before allowing it in. It can also continuously monitor connected devices to ensure they remain compliant.
+
+Together, these concepts create a defense-in-depth strategy: you set the rules (baselines), enforce them on each device (hardening), secure your wireless entry points, and then verify every device at the door (NAC).
+
+Topic 9A: Network Security Baselines & Hardening
+A. The Purpose of Secure Baselines
+A secure baseline is a collection of minimum security settings for all IT components, including network devices, software, and access controls.
+
+Its primary goal is to establish consistency and predictability in security across the entire organization.
+
+Baselines provide the specific target configuration for the hardening process. You harden a device towards the baseline.
+
+Tools can automatically check systems against a defined baseline to ensure they remain compliant.
+
+B. Sources for Secure Baselines
+CIS Benchmarks: These are globally recognized, community-developed best-practice guides for securing a wide range of systems (operating systems, network devices, cloud software). They are publicly available and continuously updated.
+
+Security Technical Implementation Guides (STIGs): These are very strict baselines developed by the U.S. Department of Defense for their own systems. They are often used as a gold standard in high-security environments.
+
+Vendor Guides: Manufacturers like Microsoft, Cisco, and others often provide their own secure configuration guides for their products.
+
+C. Hardening: Applying the Baseline
+Hardening is the process of improving a device's security by changing its default, often insecure, configuration.
+
+General Hardening Principles (Apply to almost everything):
+
+Change Default Credentials: Factory-set usernames and passwords are public knowledge and must be changed immediately.
+
+Disable Unnecessary Services: Any service or feature that is not required for the device's function should be turned off. This reduces the number of ways an attacker can target the system.
+
+Use Secure Protocols: Always choose encrypted protocols for management, like SSH (instead of Telnet) and HTTPS (instead of HTTP).
+
+Enable Logging and Monitoring: Systems must be configured to log important events (like failed logins) so that suspicious activity can be detected.
+
+Apply Patches and Updates: Regularly updating software and firmware is critical to fixing known security vulnerabilities.
+
+Implement Physical Security: Keep equipment in locked rooms to prevent physical tampering.
+
+Hardening Specifics for Network Devices (Switches & Routers):
+
+Implement Access Control Lists (ACLs): These are rules that restrict which IP addresses can manage the device or pass through it, blocking unauthorized traffic.
+
+Configure Port Security: On switches, this limits which specific devices (by MAC address) can connect to a physical port, preventing unauthorized devices from plugging in.
+
+Enforce Strong Password Policies: Mandate complex passwords to defend against password-guessing attacks.
+
+Hardening Specifics for Servers:
+
+Principle of Least Privilege: User accounts should only be given the absolute minimum permissions needed to perform their job. This limits the damage if an account is compromised.
+
+Use Host-Based Firewalls and IDS: Software firewalls and intrusion detection systems on the server itself provide an additional layer of defense.
+
+Install Antivirus and Antimalware: This is a fundamental requirement for detecting, blocking, and removing malicious software.
+
+Privileged Access Management (PAM): Strictly control and monitor the use of powerful administrative accounts.
+Core Goal of Wireless Installation
+The primary goal is to ensure complete and reliable coverage of authorized Wi-Fi across the entire area. Poor, patchy coverage creates a security risk because users are more likely to connect to malicious rogue access points or evil twin networks that appear stronger.
+
+Part 1: Physical Installation and Coverage Planning
+A. Wireless Access Point (WAP) Placement
+Function: WAPs act as bridges, connecting wireless devices to the wired network. Each has a unique MAC address called a Basic Service Set Identifier (BSSID).
+
+Network Identity: The wireless network name is the Service Set Identifier (SSID).
+
+Frequency Bands: Networks operate in the 2.4 GHz or 5 GHz bands. The 5 GHz band is generally preferred because it has more non-overlapping channels, reducing interference.
+
+Channel Bonding: WAPs can combine channels for more bandwidth, but this increases the risk of interference with other networks.
+
+Key Principle: WAPs must be positioned so their coverage areas overlap enough for seamless roaming but not so much that they cause interference with each other.
+
+B. Site Surveys and Heat Maps
+Purpose: A site survey is a planned process to measure actual wireless signal strength and interference throughout a physical space.
+
+Process:
+
+Start with a map of the area, marking obstacles like walls, metal structures, and sources of interference like microwaves.
+
+Use a Wi-Fi analyzer on a laptop or mobile device to record signal strength at many points throughout the area.
+
+Outcome - The Heat Map: The collected data is used to generate a visual "heat map."
+
+Strong signals are shown in colors like green or blue.
+
+Weak or dead zones are shown in red.
+
+Using the Results: The heat map allows you to optimize the network by:
+
+Adjusting WAP transmit power.
+
+Changing WAP channels to avoid overlap.
+
+Physically moving, adding, or removing WAPs to eliminate dead zones.
+
+Part 2: Wireless Security Configuration
+A. The Evolution of Wireless Encryption
+WEP (Wired Equivalent Privacy): The original standard is completely broken and insecure. It must not be used.
+
+WPA (Wi-Fi Protected Access): Fixed critical WEP flaws using TKIP. Now considered obsolete and insecure.
+
+WPA2: The long-standing standard that uses the strong AES encryption algorithm. It is secure but has known vulnerabilities in its handshake process that can be exploited.
+
+WPA3: The current, most secure standard. Its key improvements are:
+
+SAE (Simultaneous Authentication of Equals): Protects the password exchange from offline attacks, making password cracking much harder.
+
+Enhanced Open: Provides automatic encryption on open/public Wi-Fi networks for individual users.
+
+Stronger Cryptography: Uses more robust encryption protocols like AES-GCM.
+
+B. Insecure Setup Methods: Wi-Fi Protected Setup (WPS)
+Purpose: WPS was designed to let home users connect devices easily, often with a button press or a PIN.
+
+Critical Vulnerability: The PIN method is fundamentally flawed and can be broken by a brute-force attack in a few hours.
+
+Mitigation: The safest action is to disable WPS completely in the WAP's admin interface. Note that on some models, disabling it in software may not actually turn it off.
+
+Replacement: WPA3's Wi-Fi Easy Connect (using QR codes or NFC) is the secure modern replacement for easy device provisioning, especially for IoT devices.
+
+Part 3: Wireless Authentication Methods
+A. Personal Mode (Home/Small Office)
+Concept: Everyone uses the same password (Pre-Shared Key or PSK) to connect.
+
+WPA2-Personal (WPA2-PSK):
+
+Uses a single passphrase for all users.
+
+Vulnerable to attacks that can capture the handshake and attempt to crack the password offline.
+
+Mitigation: Use a long, complex passphrase (at least 14 characters).
+
+WPA3-Personal (WPA3-SAE):
+
+Also uses a passphrase, but the SAE protocol protects it during login.
+
+It prevents offline password cracking attacks, making it far superior to WPA2-Personal.
+
+B. Enterprise Mode (Corporate/Organizations)
+Concept: Each user has their own unique username and password (or certificate) for connection. This is the most secure method.
+
+Key Components:
+
+WAP: The device that controls access to the network.
+
+Supplicant: The software on the user's device requesting access.
+
+RADIUS Server: The central authentication server that verifies user credentials.
+
+How it Works (The 802.1X Framework):
+
+The user tries to connect to the Wi-Fi.
+
+The WAP blocks the device and acts as a middleman, passing authentication messages between the user and the RADIUS server.
+
+The RADIUS server checks the user's credentials against a database (like Active Directory).
+
+If approved, the RADIUS server tells the WAP to grant the device access to the network.
+
+Benefits of Enterprise Mode:
+
+Individual Accountability: You know who is connected to the network.
+
+Strong Authentication: Supports methods like EAP-TLS that use digital certificates for very high security.
+
+Dynamic Keys: Each user gets a unique, temporary encryption key.
+
+Centralized Control: User access can be managed from a single point.
+
+In summary, a secure wireless installation requires careful physical planning (site surveys) to ensure strong, uninterrupted coverage, and mandatory configuration with modern security protocols (preferring WPA3 and Enterprise authentication with RADIUS) to protect against unauthorized access and eavesdropping.
+Core Concept of Network Access Control (NAC)
+NAC as a Security Bouncer: Think of NAC as a sophisticated bouncer for your network. It doesn't just check IDs (authentication); it also checks if patrons meet the dress code and health standards (security compliance) before letting them in.
+
+Pre-Connection Check: Its primary role is to authenticate and inspect every user and device before granting them any access to the network.
+
+Policy Enforcement: It enforces security policies by checking a device's characteristics, such as its operating system version, patch level, and whether it has antivirus software installed and updated.
+
+Granular Access Control: NAC can restrict what users and devices can access based on their identity, device type, or security status. For example, a guest will only get internet access, while an employee's laptop will have full internal access.
+
+Critical for Modern Networks: NAC is essential for managing the risks from Bring-Your-Own-Device (BYOD) policies and the proliferation of unsecured Internet of Things (IoT) devices, ensuring they don't become a weak link.
+
+How NAC Works: Enforcement and Quarantine
+A. Dynamic VLAN Assignment
+NAC and VLANs Work Together: NAC often uses Virtual LANs (VLANs) as a tool to enforce access control.
+
+Automated Grouping: With Dynamic VLAN Assignment, the NAC system automatically places a device into a specific VLAN based on who the user is, what type of device it is, and its security health.
+
+Practical Examples:
+
+A guest or vendor is placed into a restricted "Guest VLAN" that only allows internet access.
+
+An employee's corporate laptop is placed into a "Corporate VLAN" with access to internal file servers and applications.
+
+A non-compliant device (e.g., one with out-of-date antivirus) is automatically moved to a "Quarantine VLAN."
+
+B. Quarantine for Non-Compliant Devices
+Automatic Isolation: If a device fails the security health check, the NAC system can isolate it in a special Quarantine VLAN.
+
+Damage Control: This quarantine VLAN is heavily restricted and isolated from the rest of the network. This prevents a vulnerable or infected device from spreading malware or being easily attacked.
+
+Self-Remediation: Often, the quarantine portal will provide instructions or links for the user to update their software or run scans to become compliant again.
+
+NAC Deployment Methods: Agent vs. Agentless
+A. Agent-Based NAC
+Software Installed on Devices: This method requires a small software program (an agent) to be installed on each device that connects to the network.
+
+Detailed Visibility and Control: The agent provides the NAC system with deep, detailed information about the device's state (patches, firewall status, etc.).
+
+Automatic Remediation: A key advantage is the ability for the agent to automatically fix problems, such as enabling the firewall or installing a missing update, to bring the device into compliance.
+
+Best For: Managing corporate-owned devices like employee laptops and desktops where software installation is standard.
+
+B. Agentless NAC
+No Software to Install: This method does not require any software on the connecting device.
+
+How It Works: The NAC system identifies and assesses devices using network techniques like scanning for open ports, analyzing network traffic, or using DHCP fingerprinting to guess the device type and OS.
+
+Less Detailed, More Flexible: While it provides less detailed information than an agent, it is universal. It can assess any device that connects, including personal phones, guest laptops, and IoT devices like smart TVs or printers.
+
+Best For: Managing guest access and unmanaged devices (BYOD, IoT) where you cannot or do not want to install software.
+
+C. Agent Types
+Persistent Agent: This is software that is permanently installed on the device and runs in the background.
+
+Non-Persistent (Dissolvable) Agent: This is a small, temporary agent that runs only during the security check. It loads into the device's memory for the assessment and then disappears without being permanently installed. This is a good compromise for occasional checks on BYOD devices.
+
+In summary, NAC is a critical security system that provides granular control over network access. It acts as a gatekeeper that authenticates users, assesses device health, and automatically enforces policies by directing devices to appropriate network segments (like corporate or quarantine VLANs) using either agent-based or agentless methods.
+
+In summary, this lesson teaches that security starts with a well-defined rulebook (the baseline) and requires diligent action (hardening) to ensure every device, from routers to servers, is configured to resist attacks effectively.
