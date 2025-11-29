@@ -1,0 +1,234 @@
+Lesson Introduction & Core Concepts
+The daily work of incident response involves investigating alerts from monitoring systems and issues reported by users.
+
+This work is guided by formal policies and procedures and uses various technical tools.
+
+Incident response is a critical and major part of a security professional's job.
+
+You must be able to summarize the phases of incident handling and know which data sources to use in an investigation.
+
+Incident Response vs. Digital Forensics
+Incident Response focuses on speed—swiftly identifying and eliminating malicious activity to minimize damage.
+
+Digital Forensics focuses on patience—carefully capturing, preserving, and analyzing digital evidence using verifiable methods.
+
+Forensics is used to investigate the details of an incident and identify the threat actors, and the evidence may be used in legal cases.
+
+Lesson Objectives
+In this lesson, you will learn to:
+
+Summarize the procedures for both incident response and digital forensics.
+
+Select and use the right data sources for investigating incidents.
+
+Explain the concepts and tools used for security alerting and monitoring.
+
+Incident Response Processes
+A cybersecurity incident is any successful or attempted compromise of an asset's confidentiality, integrity, or availability.
+
+The response is governed by a formal IR policy that outlines resources, processes, and guidelines.
+
+Management of an incident follows a lifecycle. The CompTIA model uses a seven-step process:
+
+The 7-Step Incident Response Lifecycle
+Preparation: This is the proactive phase. It involves making systems resilient by hardening them, writing policies, setting up communication channels, and creating the incident response team and procedures.
+
+Detection: This is the discovery phase. Incidents are found through automated alerts, manual threat hunting, or reports from employees, customers, or law enforcement.
+
+Analysis: This phase confirms whether an incident has actually occurred and performs triage to determine its severity based on the detected indicators.
+
+Containment: The goal here is to limit the damage. Actions are taken to secure data, minimize impact on business operations, notify stakeholders, and meet any legal reporting requirements.
+
+Eradication: This step involves completely removing the cause of the incident, such as malware, and restoring systems to a secure state by applying patches and secure configurations.
+
+Recovery: The cleaned systems are reintegrated into business operations. This may involve restoring data from backups and conducting security testing. Systems are monitored closely after recovery to prevent re-infection. The process may loop through containment, eradication, and recovery multiple times.
+
+Lessons Learned: After the incident, the response is analyzed to identify improvements for procedures and systems. The incident is thoroughly documented, and the findings are fed back into the Preparation phase to improve resilience for the future.
+
+Complexity and Major Incidents
+Incident response is complex because it often requires coordinated action and authorization from multiple departments and managers.
+
+Standard cybersecurity incidents are handled by the IR process. Major incidents that threaten the entire company's operations are handled by a separate disaster recovery process.
+1. Preparation
+This phase establishes the foundation for handling security breaches by creating policies, procedures, and assembling the necessary personnel and resources.
+
+Cybersecurity Infrastructure: This involves deploying key tools:
+
+Incident Detection Tools: Provide visibility by automating the collection and analysis of network traffic, system states, and log data.
+
+Digital Forensics Tools: Assist in acquiring and validating data from memory and file systems for investigation or legal prosecution.
+
+Case Management Tools: Act as a central database to log incident details and coordinate the response team.
+
+These are often integrated into suites like SIEM (Security Information and Event Management) and SOAR (Security Orchestration, Automation, and Response).
+
+Cyber Incident Response Team (CIRT/CSIRT/CERT):
+
+This is a team with diverse security skills, often located in a Security Operations Center (SOC).
+
+It is led by a senior executive who can authorize major actions, with managers coordinating daily operations and analysts working on cases.
+
+The team relies on support from other departments:
+
+Legal: Ensures compliance with laws and liaises with law enforcement.
+
+Human Resources (HR): Deals with employee-related issues and contracts.
+
+Public Relations (PR): Manages negative press and social media.
+
+Some functions can be outsourced to external incident response providers.
+
+Communication Plan:
+
+Establishes clear, confidential lines for reporting incidents and notifying affected parties.
+
+Information is shared on a strict "need-to-know" basis using a trusted contact list.
+
+The team must use out-of-band communication (not corporate email) to prevent interception by the threat actor.
+
+Stakeholder Management:
+
+Controls the release of information to prevent leaks to the press or social media.
+
+Considers legal obligations to report incidents to affected parties, regulators, or law enforcement.
+
+Manages the public relations impact to demonstrate improved security to customers.
+
+Incident Response Plan (IRP): The formal outcome of preparation, detailing procedures, contacts, and resources for different incident types.
+
+2. Detection
+This is the process of finding potential security incidents by correlating data from various sources.
+
+Indicators can be discovered through:
+
+Matching log events, error messages, and IDS alerts to known threat patterns.
+
+Identifying deviations from normal system performance baselines.
+
+Threat Hunting: Proactively searching for signs of intrusion.
+
+Reports from employees, customers, or suppliers.
+
+Public reports of new vulnerabilities from vendors or the media.
+
+Confidential Reporting: An option should be available for employees to safely report insider threats like fraud.
+
+The First Responder is the designated person on the CIRT who is notified to take charge of the situation.
+
+All employees must be trained to recognize and report potential security incidents.
+
+3. Analysis
+This phase investigates the detected indicators to confirm if a real incident has occurred, determine its priority, or dismiss it as a false positive.
+
+Impact Assessment: The severity of a confirmed incident is determined by:
+
+Data Integrity: The value of the data at risk.
+
+Downtime: The level of disruption to business processes.
+
+Economic/Publicity: The short and long-term financial and reputational damage.
+
+Scope: The number of systems affected (though this isn't always a direct indicator of priority).
+
+Detection Time: The gap between the intrusion and its discovery.
+
+Recovery Time: The complexity and length of the remediation process.
+
+Incident Categorization: Defining incident types ensures everyone on the team has a shared understanding of terms and concepts.
+
+Threat Intelligence: Using knowledge of adversary Tactics, Techniques, and Procedures (TTPs) is crucial for analysis. Frameworks like the Cyber Kill Chain help describe the stages of an attack.
+
+Playbooks: These are standard operating procedures that guide analysts step-by-step through the response to specific threat scenarios (like DDoS attacks or data theft).
+
+4. Containment
+This phase aims to limit the damage and scope of the incident.
+
+The response team must consider complex issues like what damage has already occurred, what countermeasures are available, how to avoid alerting the attacker, and what evidence to preserve.
+
+Containment Techniques are divided into two classes:
+
+Isolation-Based Containment: Completely removes the affected component from the environment.
+
+Examples: Disconnecting a host from the network (air-gapping), disabling a switch port, routing infected VLANs to a sinkhole, using firewalls to block communication, or disabling a compromised user account or application.
+
+Segmentation-Based Containment: Uses network architecture (VLANs, firewalls) to restrict a host's communication to a controlled segment.
+
+This can be used to create a honeynet to deceive the attacker and study their methods, facilitating analysis and attribution.
+
+5. Eradication and Recovery
+Eradication removes the root cause of the incident by eliminating malware, backdoors, and compromised accounts from systems.
+
+Recovery restores the affected systems to secure, operational states and ensures they cannot be easily re-compromised.
+
+Key steps in this phase include:
+
+Reconstitution: Cleaning malicious files or, more securely, restoring systems from clean backups or images. The baseline images must be updated to patch the vulnerability that caused the incident.
+
+Reauditing Security Controls: Ensuring systems are not vulnerable to a repeat attack, as targeted attacks are often followed by another.
+
+Notification: Informing affected parties (like customers) so they can perform their own remediation, such as changing stolen passwords.
+
+6. Lessons Learned
+This process reviews severe incidents to find the root cause and improve future procedures.
+
+It begins with a blameless meeting where involved and objective staff freely discuss the incident to improve procedures, not assign blame.
+
+A Lessons Learned Report (LLR) or After-Action Report (AAR) is compiled.
+
+Root Cause Analysis techniques are used:
+
+The "Five Whys": Repeatedly asking "why" to drill down from the problem to the underlying root cause (e.g., why was a database stolen? -> why could the DLP be disabled? -> why did the account have that privilege?).
+
+Comprehensive Questioning: Asking Who, Why, When, Where, and How to build a complete picture of the incident and the adversary's TTPs.
+
+Timeline Analysis: Stepping through the incident chronologically to understand decision points.
+
+7. Testing and Training
+These activities validate the preparation phase and ensure the organization is ready to respond effectively.
+
+Testing ensures staff can practice procedures in a safe, high-pressure environment. It has three forms:
+
+Tabletop Exercise: A low-cost discussion where responders explain their actions for a given scenario without using computers.
+
+Walkthroughs: Responders demonstrate their actions on sandboxed versions of real tools using scenario data.
+
+Simulations: A full, team-based exercise with a red team attacking, a blue team defending, and a white team moderating.
+
+Training focuses on:
+
+Equipping all staff with the knowledge to detect and report incidents correctly.
+
+Facilitating cross-departmental coordination.
+
+Addressing gaps identified in the Lessons Learned phase with additional security awareness.
+
+Building team resilience, communication skills, and the ability to handle stress.
+Threat Hunting
+Proactive Discovery: Threat hunting is the proactive process of searching for evidence of adversary Tactics, Techniques, and Procedures (TTPs) that may already be present within a network. It is not triggered by an alert but is initiated by the security team.
+
+Driven by Intelligence: It utilizes insights from threat intelligence to guide the search, contrasting with reactive processes that wait for automated alerts.
+
+Value to Incident Response: The findings from threat hunting provide valuable feedback for the preparation phase, demonstrating the effectiveness of security tools and highlighting areas where detection and analysis processes need improvement.
+
+Key Principles of a Threat Hunting Project
+Hypothesis-Driven Activity: Threat hunting is labor-intensive and must be performed with clear goals. It typically starts with a hypothesis about a possible threat.
+
+Triggered by Advisories: Security bulletins and advisories about new vulnerabilities or TTPs often act as the trigger for a hunt. For example, learning about a new, undetected malware strain would prompt a hunt to see if it exists within the organization's systems.
+
+Leveraging Tools and Data (Intelligence Fusion):
+
+Manual analysis of logs and network data is possible but slow and inefficient.
+
+Effective hunting uses platforms like a SIEM and threat analytics, which are fed with updated threat intelligence feeds.
+
+Analysts then create queries and filters to cross-reference this external threat data with their own internal network traffic and log data to find matches.
+
+The Concept of Maneuver:
+
+Hunters must remember they are dealing with a live, intelligent adversary who may have countermeasures.
+
+An attacker might launch a distracting attack (like a DDoS) to divert attention while they accelerate their main objectives.
+
+Defensive Maneuver means using passive discovery techniques to avoid alerting the threat actor. The goal is to maintain a positional advantage by not revealing that they have been discovered until the response team is ready to contain and eradicate them.
+
+A cybersecurity incident can escalate into a major disaster recovery incident.
