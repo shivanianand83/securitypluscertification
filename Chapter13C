@@ -1,0 +1,187 @@
+Introduction to Application Attack Indicators
+Target: Application attacks focus on vulnerabilities within an operating system (OS) or application software. These vulnerabilities are design flaws that can be exploited to bypass security or crash the system.
+
+Two Main Scenarios: These attacks generally occur in two ways:
+
+Compromising a Host: An attacker exploits a Trojan horse, a malicious email attachment, or a browser vulnerability on a user's computer. This gives them an initial foothold inside a corporate network.
+
+Compromising a Web Application: An attacker targets a weakness in a website or web service. This allows them to take control of the web server to steal data or use it as a launch point to attack other systems on the network.
+
+General Indicators: Signs that an application attack might be happening include a sudden increase in application crashes, error messages, or unusual spikes in a computer's CPU, memory, or network usage. These signs are recorded in system or application logs, but they can also have innocent causes, so they must be investigated carefully.
+
+Privilege Escalation
+Goal of Attacks: The ultimate goal of most application attacks is arbitrary code execution, meaning the attacker can run their own malicious software on the target system. If this is done over a network, it's called remote code execution.
+
+What is Privilege Escalation? Software runs with specific permissions (privileges). An exploit often allows an attacker to run their code with the same privileges as the vulnerable application. Privilege escalation is when the attacker finds a way to increase those permissions.
+
+Two Types:
+
+Vertical Escalation: Gaining a higher level of access on the same system. For example, going from a standard user account to an administrator account, or from an administrator to the powerful "SYSTEM" account.
+
+Horizontal Escalation: Gaining access to the resources of a different user who has the same permission level. For example, a bank customer using an exploit to access another customer's account data.
+
+Key Indicator: Privilege escalation is a clear red flag for an application attack. It can be detected through detailed process logging or by security software (endpoint protection) that alerts when a program tries to gain unauthorized permissions.
+
+Buffer Overflow
+The Vulnerability: A buffer is a temporary block of memory reserved for data. A buffer overflow occurs when an attacker sends more data than the buffer can hold, deliberately overflowing it and overwriting adjacent memory.
+
+The Exploit: A common type is a stack overflow. The "stack" is a part of memory that tracks program instructions, including a "return address" that tells the program where to go next. By overflowing the buffer, the attacker can overwrite this return address, redirecting the program to run the attacker's malicious code instead.
+
+Indicators and Defenses: Systems use defenses like ASLR (which randomizes memory locations) and DEP (which prevents code from running in memory reserved for data). A key indicator of a failed buffer overflow attack is a series of sudden, unexplained application or process crashes.
+
+Replay Attacks and Session Hijacking
+The Problem: Web interactions (HTTP) are stateless. To keep a user logged in, websites use session tokens, often stored in cookies. A replay attack happens when an attacker steals or guesses this token and uses it to impersonate the user and hijack their session.
+
+How Tokens are Stolen:
+
+Network Sniffing: Intercepting unencrypted network traffic, like on a public Wi-Fi network.
+
+Malware: Software installed on the victim's computer can directly steal cookies from the browser.
+
+Cross-Site Scripting (XSS): A technique where an attacker injects malicious code into a legitimate website. When another user visits the site, the code runs in their browser and can send their session cookie to the attacker.
+
+Session Prediction: This is a related attack where the attacker doesn't steal a token but guesses what the next valid session token will be, due to a weakness in how the website generates them. Proper session management uses unpredictable tokens and short session timeouts to prevent this.
+
+Tool Example: The Browser Exploitation Framework (BeEF) is a tool used by attackers to hook a victim's browser and perform actions like stealing session cookies, demonstrating how easily these attacks can be automated.
+Forgery Attacks
+Core Concept: A forgery attack tricks a system into performing an unauthorized action by submitting a forged or malicious request. Unlike a replay attack that steals a session, a forgery attack hijacks an active session to make the system do something without the user's consent.
+
+Cross-Site Request Forgery (CSRF)
+The Setup: CSRF exploits websites that use cookies for session authentication. For it to work, the victim must already be logged into the target website (like their bank or email), creating a valid session cookie.
+
+The Attack: The attacker tricks the victim's browser into sending a forged HTTP request to the target site. This request could be to change a password, transfer money, or update an email address. The request is often hidden in a link, image, or form on a malicious website that the victim visits.
+
+Why it Works: The target website sees the request coming from the victim's browser with a valid session cookie. If the website does not perform additional checks to verify the user's intent (like asking for a password again), it assumes the request is legitimate and executes it. This is also called a confused deputy attack because the user's browser (the deputy) is tricked into making a malicious request.
+
+Server-Side Request Forgery (SSRF)
+The Target: SSRF attacks the server, not the client. It forces a web server to make an arbitrary request to another service, either on its own system (internal) or on a remote host.
+
+The Exploit: This attack exploits two weaknesses: a lack of strong authentication between internal servers and poor input validation on the public-facing server. The attacker submits a malicious request to the web server, which then processes that request and forwards it to another, more trusted internal system.
+
+The Danger: SSRF is particularly dangerous in cloud environments with multiple server layers (like middleware and databases). Since the request comes from the web server itself, it often runs with the server's high privilege level, allowing the attacker to access sensitive internal systems that are not directly exposed to the internet.
+
+Injection Attacks
+Fundamental Idea: Injection attacks are server-side attacks. They exploit insecure ways that an application processes user input, allowing an attacker to "inject" and execute unauthorized commands or queries on the server.
+
+Extensible Markup Language (XML) Injection
+The Vulnerability: XML is used for data exchange, configuration, and authentication. If an application processes XML input without proper validation or encryption, it is vulnerable.
+
+Example - XXE Attack: An XML External Entity (XXE) attack can embed a request for a local file. The malicious XML code defines an entity that points to a sensitive system file (like /etc/config). If successful, the server processes this XML and returns the contents of the file in its response.
+
+Lightweight Directory Access Protocol (LDAP) Injection
+The Target: LDAP is used to manage network directories (like user accounts and permissions). LDAP injection exploits applications that build LDAP queries from unsanitized user input.
+
+How it Works: An attacker can manipulate input fields (like a login form) to alter the structure of the LDAP query. For example, by entering a specially crafted string, they can bypass password checks by making part of the query always evaluate to "true," potentially granting unauthorized access.
+
+Directory Traversal and Command Injection
+Directory Traversal: This attack tricks the web server into accessing files outside its intended root directory. The attacker uses sequences like ../ (to move up directories) in a request to reach sensitive files like passwords or system configurations.
+
+Canonicalization Attacks: To evade simple filters, attackers use canonicalization. They encode malicious input (like ../) into different formats (like %2e%2e%2f). If the server's validation routine doesn't properly decode these formats before checking them, the attack bypasses the filter.
+
+Command Injection: This attack goes beyond reading files and tries to force the server to execute operating system shell commands. A successful attack would return the command's output to the attacker, potentially giving them full control if the web server is misconfigured with high privileges.
+
+Analysis: Detecting These Attacks
+Primary Method: These attacks are often detected by analyzing web server logs and the URLs of incoming requests.
+
+URL Analysis: URLs often contain the data or actions being submitted to the server. Understanding HTTP is key:
+
+Methods: GET (retrieve data), POST (send data), and PUT (create/replace) are common methods used in these attacks.
+
+Query Strings: Data is often passed in the URL after a ? symbol in name=value pairs, which is a common vector for malicious input.
+
+Percent Encoding Obfuscation:
+
+Legitimate Use: Percent encoding allows reserved characters (like /, ?, &) to be safely transmitted in a URL.
+
+Malicious Use: Attackers misuse percent encoding to hide their malicious input. By encoding normal characters, they can bypass simple security filters that don't decode the URL before inspecting it.
+Web Server Logs as a Security Tool
+Purpose of Logs: Web servers are configured to automatically record details about the HTTP requests they receive and the responses they send. These logs are a primary source of evidence for detecting both attempted and successful cyber attacks.
+
+What They Capture: Logs typically record information about traffic that triggers an error or matches specific, predefined rules. This makes them ideal for spotting suspicious activity.
+
+Analyzing HTTP Status Codes
+Status Codes as Clues: The HTTP status code in a server's response is a critical indicator. It quickly reveals whether a request was successful, why it failed, and where the problem might lie.
+
+Client-Side Errors (400 Range): Codes in the 400s mean the server believes the error is due to the client's request.
+
+Example: 403 Forbidden: Repeated 403 errors can indicate an attacker is trying to access files or directories they are not authorized to see, a common step in reconnaissance.
+
+Server-Side Errors (500 Range): Codes in the 500s indicate a problem with the server itself when trying to process a request.
+
+Example: 502 Bad Gateway: This could mean communication between the main web server and a backend service (like a database) has failed. This can be a sign of a misconfiguration, a system failure, or potentially the result of a successful attack that disrupted the backend.
+
+The Value of Detailed Logging
+HTTP Headers: Advanced logging can capture the full HTTP headers of requests and responses. This provides a deep, forensic-level view of the interaction.
+
+This can include cookie information, which is vital for investigating session hijacking or replay attacks, as it might show a session token being used from an unexpected location.
+
+Practical Example: Identifying a Scan
+Normal vs. Malicious Traffic: Logs show a clear contrast between a legitimate user and a scanner.
+
+Ordinary Client: A normal user's visit will show a logical sequence of requests, like fetching a webpage and its associated images (returning status code 200 OK).
+
+Scanning Activity (e.g., Nikto): A scanning tool will generate a very different pattern. It will rapidly probe for hundreds of common files and directories (like /admin/, /backup/, config.php).
+
+The Tell-Tale Sign: Most of these probes will fail, resulting in a long series of 404 Not Found errors from a single IP address in a short time. This is a clear indicator of an attacker trying to "map" the website's structure to find vulnerabilities and its "attack surface."
+Overarching Principles for Indicator Analysis
+Use Advanced Endpoint Protection: Implement security tools on devices (endpoints) that analyze behavior rather than just looking for known malicious files. This is crucial for detecting fileless malware that runs in memory without saving a file to the disk.
+
+Utilize a Sandbox for Investigation: Set up an isolated, safe environment (a sandbox) where you can run suspicious software or observe processes. This allows you to safely analyze malware behavior and system interactions without risking your live network.
+
+Leverage Threat Intelligence: Subscribe to threat data feeds that provide up-to-date information on known malicious IP addresses, file hashes, and attack patterns. This helps you quickly identify documented threats.
+
+Indicators of Specific Attack Types
+System Compromise Indicators
+Unusual Resource Usage: A sudden, sustained spike in CPU, memory, or network activity can indicate malware running, a crypto-mining infection, or a system being used in a DDoS attack.
+
+File System Anomalies: Look for unexpected changes, such as new, modified, or encrypted files, especially in critical system directories. This is a primary sign of ransomware or a system intrusion.
+
+Resource Inaccessibility: When users cannot access their files, applications, or systems, it can signal a ransomware attack that has encrypted data or a deliberate denial-of-service attack.
+
+Missing or Gaps in Logs: If system or application logs are deleted, turned off, or have unexplained time gaps, it is a strong indicator that an attacker has gained access and is covering their tracks.
+
+Account Compromise Indicators
+Account Lockouts: A series of failed login attempts leading to an account lockout can indicate a brute force password attack.
+
+Concurrent Sessions: If a user account is logged in from multiple locations at the same time, it suggests that an attacker is using stolen credentials (credential replay).
+
+Impossible Travel: A single user account being used from two geographically distant locations in an impossibly short time (e.g., New York and London in 30 minutes) is a clear sign of account credentials being stolen and used by an attacker in a different region.
+
+Malware Type Indicators
+Characteristics of Common Malware:
+
+Bloatware/Virus: Unwanted software that consumes resources; a virus self-replicates by attaching to other files.
+
+Worm: Spreads automatically over a network without user interaction, consuming bandwidth.
+
+Trojan: Disguised as legitimate software, it creates a backdoor for attackers.
+
+Spyware/Keylogger: Secretly monitors and transmits user activity, such as keystrokes (passwords).
+
+Ransomware: Makes data or systems inaccessible by encrypting files and demands a ransom.
+
+Logic Bomb: Malicious code that remains dormant until a specific trigger condition is met (like a date).
+
+Network Attack Indicators
+DDoS Attacks: A sharp, massive increase in traffic to a network appliance (firewall, router, server), overwhelming its resources. Reflected/Amplified attacks use third-party servers to send a flood of responses to the target.
+
+Other Network-Based Attacks:
+
+On-path Attacks: Abnormal network latency or strange entries in ARP tables can indicate someone is intercepting communications.
+
+DNS Attacks: Unexpected DNS query failures or redirects to malicious websites.
+
+Wireless Attacks: Rogue access points or a high number of deauthentication frames on a Wi-Fi network.
+
+Password Attacks: A large number of failed logins from a single IP (brute force) or a few failed logins across many accounts (password spraying) found in authentication logs.
+
+Application Attack Indicators
+Host-Based Detection: These attacks are primarily identified through monitoring and logs on the server or application host.
+
+Injection & Buffer Overflow: Application errors, crashes, or unusual database queries logged by the web server or database.
+
+Replay & Forgery Attacks: Strange sequences of requests in web server logs, like a user performing sensitive actions in rapid succession without normal browsing.
+
+Privilege Escalation: Log entries showing a user or process suddenly gaining higher-level system permissions.
+
+Directory Traversal: HTTP requests in server logs that contain patterns like ../ or their encoded equivalents, attempting to access files outside the web directory.
