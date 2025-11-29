@@ -1,0 +1,181 @@
+Malware Classification: A Pointwise Explanation
+1. Core Concept of Malware
+Malware is any software that performs actions harmful to the system owner.
+
+A key complication is that sometimes the user expects or tolerates its installation, blurring the lines of what is considered malicious.
+
+2. Classification by Vector (How it Spreads/Executes)
+This method categorizes malware based on how it gets onto a system and spreads.
+
+Viruses and Worms:
+
+Spread without user authorization by hiding within other processes or code.
+
+Virus: Requires a host file to infect (e.g., an executable or document) and needs user action to spread (like opening a file).
+
+Worm: Is memory-resident and can replicate automatically over a network without user intervention, often by exploiting software vulnerabilities.
+
+Trojan:
+
+Malware disguised as legitimate software.
+
+Designed to operate secretly and does not seek user consent.
+
+Potentially Unwanted Programs (PUPs) / Potentially Unwanted Applications (PUAs):
+
+Software installed alongside a program the user wanted or pre-installed on a new device.
+
+Not automatically malicious like a Trojan; often installed through confusing license agreements.
+
+Also known as grayware or bloatware.
+
+3. Classification by Payload (What it Does)
+This method categorizes malware based on the malicious actions it performs after infection.
+
+Spyware: Secretly monitors user activity, takes screenshots, or activates recording devices.
+
+Keylogger: A type of spyware that specifically records keystrokes to steal passwords and credit card information.
+
+Remote Access Trojan (RAT): Malware that gives an attacker full remote control of the system, mimicking legitimate remote control software but operating covertly.
+
+Ransomware: Malware that blocks access to a system or encrypts files, demanding a ransom to restore access.
+
+Rootkit: Malware that gains deep system-level (like "SYSTEM" or "root") privileges to hide itself and other malware from detection.
+
+4. Detailed Malware Types and Techniques
+A. Computer Viruses (A subset classified by what they infect)
+
+File Infector: Infects host executable files and runs when the host process runs.
+
+Memory Resident: Loads itself into memory as a separate process that persists even after the host is closed.
+
+Boot Virus: Infects the boot sector of a disk, executing when the computer starts up.
+
+Script/Macro Virus: Uses scripting engines (like PowerShell, JavaScript, or Office Macros) to perform malicious actions.
+
+Polymorphic Virus: Can change its own code to evade detection by antivirus software.
+
+B. Fileless Malware & Modern Threats
+
+Fileless Malware: Does not write a file to disk; instead, it runs in memory, making it hard to detect.
+
+"Live off the Land": Uses legitimate system tools (like PowerShell and WMI) for malicious purposes, blending in with normal activity.
+
+Advanced Persistent Threat (APT) / Advanced Volatile Threat (AVT): Terms for sophisticated, stealthy attacks that often use fileless techniques to maintain long-term access to a network.
+
+C. Spyware and Tracking
+
+Tracking Cookies & Supercookies: Files and techniques used by websites to track user browsing activity and collect data.
+
+Adware: A type of PUP that bombards the user with ads and often reconfigures the browser (changes homepage, adds toolbars).
+
+Keyloggers: Can be software-based (a program or script) or even a physical hardware device attached to a computer.
+
+D. Backdoors and Botnets
+
+Backdoor: Any method that allows unauthorized access to a system, bypassing normal authentication.
+
+Bot & Botnet: A bot is an automated script on a compromised machine. A botnet is a network of such machines, controlled by a central "herder" to perform large-scale attacks like DDoS or spamming.
+
+Command and Control (C2): The server or network that the malware calls back to for instructions. Attackers often hide C2 traffic within normal-looking web traffic (like HTTPS or DNS).
+
+E. Rootkits
+
+Privilege: Operates with the highest system privileges (like "SYSTEM" in Windows or "root" in Linux).
+
+Stealth: Can hide its processes, files, and network connections from the operating system and security tools.
+
+Persistence: Can be extremely difficult to remove, with some variants residing in firmware (the computer's low-level software), surviving an OS reinstall.
+
+F. Ransomware and Logic Bombs
+
+Scareware: Displays fake warnings to frighten the user into paying money, but doesn't actually damage files.
+
+Crypto-Ransomware: The most dangerous type; it encrypts the user's files, rendering them unusable until a ransom is paid for the decryption key.
+
+Cryptojacking: Malware that hijacks a system's resources to mine for cryptocurrency without the user's knowledge.
+
+Logic Bomb: Malicious code that remains dormant until a specific condition is met, such as a certain date or a system event (like an employee being fired).
+TTPs (Tactics, Techniques, and Procedures)
+TTPs describe the behavior and methods of a threat actor. They explain how an attack is carried out.
+
+Tactic: The "Why" - The high-level goal of an attacker during a phase of their operation.
+
+Example: Reconnaissance - The attacker's goal is to gather information about the target.
+
+Example: Privilege Escalation - The attacker's goal is to gain higher-level permissions on a system.
+
+Technique: The "How" - The specific method used to accomplish a tactical goal.
+
+Example: To achieve the Reconnaissance tactic, an attacker may use the technique of Vulnerability Scanning.
+
+Example: To achieve the Privilege Escalation tactic, an attacker may use the technique of Exploiting a Software Vulnerability.
+
+Procedure: The "What With" - The detailed, step-by-step implementation of a technique, often unique to a specific threat actor or tool.
+
+Example: The Vulnerability Scanning technique is performed using a specific tool (like Nessus) configured in a distinctive way to scan for a particular set of vulnerabilities.
+
+Example: The Exploiting a Software Vulnerability technique is performed by using a specific, custom-written exploit code that targets a particular version of an application.
+
+Analogy: Building a house.
+
+Tactic: "Build the foundation."
+
+Technique: "Pour concrete."
+
+Procedure: "Use Brand X cement mixer, with a 3:1 gravel-to-sand ratio, poured within a 2-hour window."
+
+IoCs (Indicators of Compromise)
+IoCs are the forensic evidence that an attack has occurred or is ongoing. They are the clues left behind by the TTPs.
+
+Definition: A residual sign or piece of evidence that a system or network has been successfully attacked.
+
+In simple terms: IoCs are the evidence of a TTP.
+
+Examples of IoCs:
+
+Malware Signature: A known malicious file hash or code pattern.
+
+Suspicious Network Traffic: Connections to a known malicious IP address or domain (Command & Control server).
+
+File System Changes: Unusual files appearing, files being encrypted (with new extensions from ransomware), or specific registry keys being modified.
+
+System Configuration Changes: System recovery tools like backups being disabled.
+
+User Account Anomalies: Unexpected account lockouts, logins from impossible geographic locations, or multiple concurrent sessions for a single account.
+
+Key Characteristics of IoCs:
+
+They can be definite (like a malware signature) but are often subtle and require correlating multiple data points to be confident.
+
+They are the "what" you look for when hunting for threats on your network.
+
+The term IoA (Indicator of Attack) is sometimes used for evidence of an intrusion in progress, while IoC often implies a successful compromise.
+
+The Relationship Between TTPs and IoCs
+TTPs are the behavior. IoCs are the evidence of that behavior.
+
+Example Scenario (Ransomware Attack):
+
+Tactic: Initial Access.
+
+Technique: Exploit Public-Facing Application.
+
+Procedure: Use a specific exploit against a vulnerability in a network monitoring tool.
+
+** resulting IoCs:** The specific version of the vulnerable software installed, log entries showing the exploit attempt, and unexpected network connections from the monitoring tool.
+
+Other Key Points on Detecting Malicious Activity
+Beyond Signature Scanning: Modern security relies on detecting IoCs and TTPs, not just known malware files, because advanced threats are customized and fileless.
+
+Sandbox Execution: Isolating and running suspicious code in a safe, monitored environment (a "sandbox") to observe its behavior and identify TTPs and IoCs without risking the real network.
+
+Common Categories of IoCs to Monitor:
+
+Resource Consumption: Unusually high CPU (e.g., from cryptojacking) or network usage (e.g., from a DDoS bot).
+
+File System & Logs: Unauthorized access attempts blocked by a DLP system, missing log files, or timestamps that have been tampered with.
+
+Resource Inaccessibility: Systems or files that become unavailable, which could indicate a Denial-of-Service attack or a ransomware encryption event.
+
+Account Compromise: Signs like account lockouts, impossible travel logins (logging in from two distant locations in a short time), and concurrent sessions.
