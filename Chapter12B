@@ -1,0 +1,109 @@
+Topic 12B: Digital Forensics
+1. Core Concept of Digital Forensics
+
+Digital forensics involves the scientific examination and analysis of data from computer systems and networks.
+
+Its goal is to uncover relevant information like deleted files, user activity, timestamps, and unauthorized traffic.
+
+The ultimate purpose is to present this evidence in a manner that is acceptable in a court of law.
+
+2. Legal Foundations: Due Process and Legal Hold
+
+Due Process: This is a legal principle ensuring fair treatment through the judicial system. In forensics, it means evidence must be collected and handled using strict, documented procedures to ensure its admissibility in court. Any mistakes can lead to evidence being dismissed.
+
+Legal Hold: When a lawsuit is anticipated or underway, an organization is legally required to preserve all relevant information. This means suspending routine deletion of records (both electronic and paper) and potentially seizing computer systems as evidence.
+
+3. Evidence Acquisition: The Process of Collecting Data
+
+Acquisition is the process of making a forensically sound copy of data from a device (like a hard drive or phone).
+
+Legal Authority: It is crucial to verify the legal right to seize and search a device, especially with personal/BYOD devices, to avoid evidence being ruled inadmissible.
+
+Challenge of Volatility: Digital evidence is fragile. Turning a system off can preserve some data but destroy other evidence stored only in active memory (RAM). This creates a complex decision for investigators.
+
+4. Order of Volatility: Capturing Evidence Systematically
+
+Evidence must be collected in the order of how quickly it can be lost, from most volatile to least volatile.
+
+The general order is:
+
+CPU registers and cache memory.
+
+System memory (RAM) and running processes.
+
+Data on persistent storage (hard drives, SSDs).
+
+Remote logging data and physical network configuration.
+
+Archival media and printed documents.
+
+5. System Memory (RAM) Acquisition
+
+System memory is volatile; its contents are lost when power is removed.
+
+A memory dump (image) can be captured using specialized tools and can reveal running processes, network connections, encryption keys, and data not available on the disk.
+
+This often requires pre-installed software or drivers to access the memory.
+
+6. Disk Image Acquisition
+
+This involves acquiring data from non-volatile storage like HDDs, SSDs, and USB drives.
+
+There are three primary acquisition states, each with trade-offs:
+
+Live Acquisition: Copying data while the system is running. This may capture more data but can alter evidence and alert a threat actor.
+
+Static Acquisition (Shutdown): Shutting down the system properly before acquisition. This risks malware triggering anti-forensics measures during the shutdown process.
+
+Static Acquisition (Pull the Plug): Disconnecting power abruptly. This is most likely to preserve a forensically clean state but risks data corruption.
+
+Tools like dd or dcfldd on Linux are commonly used to create bit-for-bit copies of storage media.
+
+7. Evidence Preservation: Ensuring Integrity
+
+The goal is to create a legally defensible timeline and prove the evidence is untampered.
+
+Write Blockers: A hardware or software tool is used during acquisition to prevent any changes to the original source disk.
+
+Hashing: A cryptographic hash (like MD5 or SHA) is taken of the original media and again of the copy. If the hashes match, it proves the copy is identical and has not been altered.
+
+All analysis is performed on a copy of the evidence, never the original.
+
+8. Chain of Custody
+
+This is a detailed, documented record of every person who handled the evidence, when, why, and where it was stored.
+
+Evidence is placed in tamper-evident, anti-static bags to prevent physical and electrostatic damage.
+
+A secure storage facility with environmental controls is essential.
+
+The chain of custody protects against accusations of evidence tampering and is critical for court admissibility.
+
+9. Reporting and Analysis
+
+The final report summarizes the findings and conclusions from the analysis.
+
+Key Ethical Principles:
+
+No Bias: Conclusions must be based solely on the direct evidence.
+
+Repeatability: Another expert should be able to repeat the analysis using the same evidence and methods and achieve the same results.
+
+Minimal Manipulation: The original evidence should not be changed. If manipulation is necessary (e.g., to bypass a phone lock), it must be thoroughly documented and justified.
+
+10. E-Discovery
+
+This is the process of filtering vast amounts of data gathered during a forensic examination to identify information relevant to a legal case.
+
+E-discovery tools help by:
+
+Identifying and removing duplicate files.
+
+Enabling advanced searches (keyword, semantic) for relevant data.
+
+Applying tags to organize evidence.
+
+Ensuring the security and integrity of the evidence throughout the process.
+
+Facilitating the disclosure of evidence to all parties in the lawsuit.
+
