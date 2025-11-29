@@ -1,0 +1,110 @@
+Topic 12D: Alerting and Monitoring Tools
+1. Core Concept: The Need for Centralized Management
+
+Numerous security controls (firewalls, IDS, hosts, etc.) generate vast amounts of log data and alerts.
+
+Manually reviewing this data is impractical.
+
+The solution is a centralized system to collect, correlate, and analyze this data for effective monitoring and alerting.
+
+2. Security Information and Event Management (SIEM)
+
+Purpose: SIEM software is the central tool for managing security data.
+
+Core Function: It collects and correlates data from a wide variety of sources, including network devices, servers, security appliances, and applications.
+
+Benefit: It provides a "single pane of glass" for a unified view of the security posture across a complex environment.
+
+3. Data Collection Methods for SIEM
+
+Agent-Based: A small software agent is installed on each host (Windows, Linux, macOS) to filter and send log data to the SIEM server.
+
+Listener/Collector: Network appliances (switches, routers, firewalls) push their logs to the SIEM, typically using the Syslog protocol, without needing an agent.
+
+Sensor: The SIEM collects raw network data, like packet captures and traffic flows, from network taps or switch mirror ports.
+
+4. Log Aggregation
+
+This is the process of normalizing data from different sources into a consistent, searchable format.
+
+SIEMs use parsers to interpret logs from various vendors and map them to standard fields.
+
+A key function is normalizing timestamps from different time zones to a single timeline.
+
+5. SIEM Activities: Alerting, Reporting, and Archiving
+
+Alerting: The SIEM uses correlation rules to identify potential security incidents from the collected data.
+
+Correlation Rules: These are logical statements (using AND, OR, operators like >, <) that find significant patterns. For example, multiple login failures for a single account within a short time.
+
+Threat Intelligence Feeds: SIEMs can integrate these to match internal data against known malicious indicators (IPs, domains).
+
+Reporting: SIEMs generate reports for different audiences:
+
+Executive Reports: High-level summaries for strategic planning.
+
+Manager Reports: Detailed information for operational decisions.
+
+Compliance Reports: Data required by regulators.
+
+Common metrics include authentication failures, vulnerability status, and incident statistics.
+
+Archiving: SIEMs enforce data retention policies, moving old data to archive storage. This supports historical analysis, threat hunting, forensics, and compliance.
+
+6. Alert Response and Tuning
+
+Alert Response:
+
+Validation: The analyst must determine if an alert is a True Positive (real threat) or a False Positive (benign activity flagged incorrectly).
+
+Quarantine: Isolating the affected host or network segment.
+
+Playbooks: Guide analysts through standardized response procedures for different scenarios.
+
+Alert Tuning: Crucial for managing alert volume and quality.
+
+Alert Fatigue: Occurs when analysts are overwhelmed by low-priority alerts, causing them to miss critical ones.
+
+False Negative: A serious failure where the system misses actual malicious activity.
+
+Tuning Techniques: Adjusting rule parameters, muting alert levels, redirecting alert "floods" to dedicated teams, and using machine learning to automate tuning.
+
+7. Monitoring Network Infrastructure
+
+Network Monitors: Track the health and performance of network hardware (switches, routers) using protocols like SNMP.
+
+They monitor CPU, memory, temperature, and link utilization.
+
+SNMP traps can alert on specific events like hardware failure.
+
+NetFlow / IPFIX: A standard for reporting network flow metadata (not the full packet data).
+
+A flow is a sequence of packets sharing key characteristics, defined by a 5-tuple: Source IP, Destination IP, Protocol, Source Port, and Destination Port.
+
+Flow analysis helps identify traffic trends, anomalies, and potential malicious communication (like malware calling its command & control server).
+
+8. Monitoring Systems and Applications
+
+System Monitors: Similar to network monitors but for servers and hosts, reporting on health metrics.
+
+Logs: Critical for diagnosing issues and providing an audit trail of user and system actions. Regular log review is essential for proactive security.
+
+Application & Cloud Monitors: Proprietary tools that monitor the health, performance, and error conditions of specific applications and cloud services.
+
+Vulnerability Scanners: Report on unpatched systems and configuration weaknesses across the network, providing a status view of security hygiene.
+
+Antivirus / Endpoint Protection: These tools can be integrated with the SIEM to alert on malware detection and potential malicious behavior on endpoints.
+
+Data Loss Prevention (DLP): Monitoring DLP policy violations can reveal trends and potential data exfiltration attempts.
+
+9. Benchmarks and Compliance Scanning
+
+Systems should be configured according to security best practices defined in benchmarks.
+
+Security Content Automation Protocol (SCAP) allows scanners to check if a system meets a configuration baseline automatically.
+
+OVAL: A language for describing a system's security state.
+
+XCCDF: A format for creating machine-readable configuration checklists.
+
+Compliance Scans measure systems against these benchmarks or regulatory frameworks (like NIST) to ensure they conform to required standards.
