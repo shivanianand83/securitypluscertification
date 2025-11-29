@@ -1,0 +1,248 @@
+Introduction: The Overall Threat
+Company offices and their networks have many vulnerable points that attackers can target.
+
+To protect against these intrusions, you need to understand three specific types of attacks: Denial of Service, On-path, and Credential-based attacks.
+
+You must also be able to identify the signs of these attacks by analyzing the right data.
+
+Part 1: Physical Attacks
+A physical attack targets the tangible components of a network, such as cables, hardware, or the facility housing them.
+
+Brute Force Physical Attacks
+This is a direct, forceful attack on physical property.
+
+Examples include smashing a device to make it unusable (a physical Denial of Service) or breaking a lock to enter a restricted area, often for theft or tampering.
+
+Since preventing theft is often not possible, systems should be "tamper-evident," meaning they show clear, hard-to-hide signs of being forced open, so you know an incident occurred. This is crucial for reporting data breaches and revoking access.
+
+Environmental Attacks
+This type of attack aims to disrupt the operating environment of the network.
+
+It can be a direct Denial of Service, like cutting power lines or network cables, or disrupting cooling systems.
+
+Alternatively, attackers may target building maintenance systems (like HVAC controls) as a way to gain access to the company network.
+
+Because of these risks, physical premises must be continuously monitored for damage or the installation of unauthorized devices.
+
+RFID Cloning
+RFID technology uses passive tags (like access cards) that are powered and read by a reader's electromagnetic field.
+
+Cloning is copying a legitimate access card. A lost or stolen card without strong encryption can be easily duplicated. Signs of this attack include a card being used in a suspicious location or at an unusual time.
+
+Skimming is using a hidden, fake reader to steal a card's information to create a duplicate. Some types of proximity cards are very vulnerable to this.
+
+These attacks mainly work on simple, "dumb" cards that transmit a static code. If card usage is logged, signs of compromise include "impossible travel" (the same card used in two distant locations in a short time) or concurrent use.
+
+NFC is a related technology used for contactless payments and access, allowing two-way communication but only at very close range.
+
+Part 2: Network Attacks
+Network attacks are strategies to disrupt or gain unauthorized access to systems over a network. They are best understood as stages in an attack lifecycle.
+
+Reconnaissance
+This is the initial scanning phase where an attacker learns about the network.
+
+It involves discovering active hosts, identifying their open ports, and figuring out what software and operating systems are running.
+
+While rapid scanning can be detected, it is very difficult to tell malicious scanning apart from legitimate network management activity.
+
+Credential Harvesting
+This is a specific type of reconnaissance where the attacker's goal is to steal passwords or cryptographic keys to gain authenticated access to systems.
+
+Denial of Service (DoS)
+This attack aims to make a host or service unavailable.
+
+It can be detected by monitoring tools that alert when a service is down or experiencing a massive, abnormal surge in traffic.
+
+A DoS attack can be a goal in itself or a distraction to enable other attacks.
+
+Weaponization, Delivery, and Breach
+These stages involve the attacker creating malicious code and delivering it to a target to gain access without needing credentials.
+
+This can be done by exploiting a vulnerable application over the network or by tricking a user into opening a malicious file attachment.
+
+Command and Control (C2), Beaconing, and Persistence
+Once inside, the attacker sets up a way to remotely control the compromised host and maintain long-term access.
+
+The malware on the host secretly "beacons" out to the attacker's server, often disguising this communication as normal, encrypted web traffic (HTTPS).
+
+Detection relies on spotting connections to suspicious locations (like IP addresses in high-risk countries) or finding the malware itself on the host.
+
+Lateral Movement, Pivoting, and Privilege Escalation
+The attacker then moves from the initially compromised host to other systems on the network, seeking higher-level permissions.
+
+This is detected by identifying unusual account logins or privilege use, but it is very challenging to distinguish from normal user activity without advanced, machine-learning-based security tools.
+
+Data Exfiltration
+The final stage is stealing valuable data by copying it to the attacker's own system.
+
+A sign of this could be detecting unusually large transfers of data, but a skilled attacker can avoid this by exfiltrating small amounts of data slowly over time.
+
+Important Note on the Attack Lifecycle
+These stages are not always linear. An attacker might repeat stages. For example, after gaining an initial foothold, they will perform internal reconnaissance and credential harvesting to enable further lateral movement within the network.
+Part 1: Distributed Denial of Service (DDoS) Attacks
+Core Concept of DoS/DDoS
+A Denial of Service (DoS) attack is any action that makes a resource (like a website or server) unavailable.
+
+It can target physical hardware, consume system resources (CPU, memory), or exploit weaknesses in network protocols.
+
+A Distributed Denial of Service (DDoS) is a large-scale DoS attack launched from many compromised computers (a botnet) at the same time.
+
+How DDoS Works
+An attacker first takes over computers to act as "handlers," which are used to infect thousands of other machines with DDoS software, creating a botnet.
+
+The attacker then commands the entire botnet to attack a single target.
+
+Types of DDoS Attacks
+Bandwidth Consumption: Some attacks simply use the massive number of bots to flood a network with traffic, using up all the available bandwidth and blocking legitimate users.
+
+Resource Exhaustion: Other attacks overwhelm a specific server by bombarding it with requests, consuming its CPU and memory until it becomes slow, unresponsive, or crashes completely.
+
+Example - SYN Flood: This attack exploits the TCP "three-way handshake." The attacker sends many connection requests but never completes them, filling up the server's connection queue. This prevents the server from accepting legitimate connection attempts.
+
+Advanced DDoS Techniques
+Reflected Attacks (DRDoS): To be more efficient, attackers spoof the victim's IP address and send requests to many legitimate servers. All those servers then send their responses to the victim, overwhelming the victim's bandwidth. This is an "asymmetric threat" because it allows a small attacker to cause massive damage.
+
+Amplified Attacks: This is a type of reflected attack that exploits protocols (like DNS or NTP) where a small request from the attacker forces a server to send a very large response to the victim. This "amplifies" the attack's power.
+
+DDoS Indicators and Mitigation
+The primary sign of a DDoS attack is a sudden, unexplained massive spike in network traffic.
+
+Mitigation is difficult because the attacking IP addresses are often spoofed or part of a vast botnet, making them hard to block individually.
+
+Defense relies on high-availability solutions like load balancers, clustered servers, and intrusion detection systems that can automatically block traffic from malicious IP ranges.
+
+Part 2: On-Path Attacks
+Core Concept
+An on-path attack (also called a man-in-the-middle attack) occurs when an attacker secretly positions themselves between two communicating parties (e.g., a user and a website).
+
+The attacker can intercept, monitor, and even alter the communication without either party knowing. For example, they could replace a real login page with a fake one to steal credentials.
+
+Example: ARP Poisoning
+This is a common on-path attack on local networks that exploits the Address Resolution Protocol (ARP), which links IP addresses to physical hardware (MAC) addresses.
+
+The attacker broadcasts fake ARP messages, tricking other computers on the network into believing the attacker's computer is the network router.
+
+Once successful, all traffic destined for the internet is sent to the attacker's machine first, which then forwards it to the real router, allowing the attacker to see all the data.
+
+Part 3: Domain Name System (DNS) Attacks
+Why DNS is a Target
+DNS is the "phonebook of the internet," translating domain names (like example.com) into IP addresses. Compromising it allows an attacker to redirect traffic.
+
+Types of DNS Poisoning Attacks
+DNS-Based On-Path Attacks: An attacker on the same local network can use techniques like ARP poisoning to intercept DNS queries and reply with fake, malicious IP addresses, redirecting users to fake websites.
+
+DNS Client Cache Poisoning:
+
+Computers first check a local file (called the HOSTS file) and a local cache for domain name mappings before querying a DNS server.
+
+If an attacker with administrative access can place a false entry in the HOSTS file, they can permanently redirect specific traffic. Finding suspicious entries in this file is a key indicator of compromise.
+
+DNS Server Cache Poisoning: This attack corrupts the records on the DNS server itself. An attacker can trick a DNS server into caching false information, which then spreads the redirection to all users who query that server.
+
+DNS Attack Indicators
+DNS server logs can reveal attack signs, such as:
+
+Hosts making queries to known malicious domains.
+
+A sudden spike in DNS lookup failures, which can indicate malware activity.
+
+DNS being used for Command and Control (C2) communications or to secretly exfiltrate data from a network.
+Part 1: Wireless Attacks
+Rogue Access Points & Evil Twins
+A rogue access point is any unauthorized Wi-Fi point connected to the network, set up either maliciously or by accident, creating a backdoor.
+
+An Evil Twin is a malicious rogue access point that impersonates a legitimate one.
+
+It tricks users by using a similar network name (SSID), sometimes through typosquatting, or by overpowering the legitimate signal with a stronger one.
+
+The goal is to steal user credentials or perform on-path attacks by having users connect to it instead of the real network.
+
+Detection involves using Wi-Fi analyzers to find unknown or duplicate MAC addresses and monitoring the network for unauthorized hardware.
+
+Wireless Denial of Service (DoS)
+This attack aims to disconnect clients from the legitimate Wi-Fi network.
+
+It can be done by creating radio interference or by using a rogue access point with a stronger signal to "jam" the legitimate one.
+
+A common technique is a Disassociation Attack, where an attacker sends spoofed management frames to a client or all clients, telling them they are disconnected from the network.
+
+Wireless Replay and Key Recovery
+These attacks target the wireless authentication process.
+
+An attacker captures the data exchanged when a device connects to the network (the "handshake") and then performs an offline brute-force attack to crack the network password.
+
+A KRACK Attack is a specific type that exploits a vulnerability in the WPA and WPA2 4-way handshake, affecting both personal and enterprise networks. Patching clients and access points is the primary defense.
+
+Part 2: Password Attacks
+Online Password Attacks
+The attacker interacts directly with a login service (like a website), trying to guess passwords.
+
+Indicators include many failed login attempts followed by a success, or logins at unusual times/locations.
+
+Defenses include using strong passwords, limiting login attempts, and blocking malicious IP addresses.
+
+A downside of login limits is that an attacker can use them to launch a DoS attack by intentionally locking out legitimate users.
+
+Offline Password Attacks
+The attacker first steals a file containing password hashes (like the Windows SAM file or the Linux /etc/shadow file).
+
+They then crack the passwords on their own system without interacting with the target, making detection very difficult.
+
+The only clear indicator may be a log showing unauthorized access to the password file itself.
+
+Brute Force, Dictionary, and Hybrid Attacks
+Brute Force: The attacker tries every possible character combination to guess a password. This is computationally intensive but guaranteed to work eventually. It's most effective against short passwords.
+
+Dictionary Attack: The attacker tries words from a pre-defined list (a "dictionary") of common passwords. This is faster than brute force but relies on users choosing weak passwords.
+
+Hybrid Attack: This combines both methods, testing dictionary words with minor variations (like adding numbers at the end, e.g., "james1").
+
+Password Spraying
+This is a "horizontal" online attack. Instead of trying many passwords on one account, the attacker takes one or two very common passwords (like "Password123") and tries them against a large list of usernames. This helps avoid account lockouts.
+
+Part 3: Credential Replay Attacks
+Once an attacker has a foothold on a network, they use these attacks to move laterally and escalate privileges without needing to crack passwords.
+
+These attacks primarily target Windows Active Directory environments.
+
+How They Work
+When a user logs into a Windows machine, their credentials (like Kerberos tickets and password hashes) are stored in the memory of the LSASS process.
+
+If an attacker can dump these from memory, they can "replay" them to authenticate to other systems.
+
+Types of Credential Replay Attacks
+Pass the Hash (PtH): The attacker steals a user's NT hash and uses it to authenticate to other network services that still accept the legacy NTLM protocol.
+
+Pass the Ticket (PtT): The attacker forges or steals Kerberos authentication tickets.
+
+Golden Ticket: Forges a master ticket (TGT) granting unlimited access to the entire domain.
+
+Silver Ticket: Forges a ticket for a specific service.
+
+Defenses include disabling NTLM, using Credential Guard, applying patches, and using secure configurations.
+
+Part 4: Cryptographic Attacks
+Downgrade Attacks
+The attacker forces a client and server to use a weaker, less secure version of a protocol (like SSL instead of TLS) or a weaker encryption algorithm (like RC4 instead of AES).
+
+This makes it easier for the attacker to break the encryption. Kerberoasting is an example that downgrades Kerberos encryption to crack service account passwords.
+
+Evidence of these attacks can be found in server logs.
+
+Collision & Birthday Attacks
+These attacks target cryptographic hash functions.
+
+Collision Attack: The attacker finds two different inputs that produce the same hash output. This allows them to forge a digital signature by getting a benign file signed and then transferring the signature to a malicious file that has the same hash.
+
+Birthday Attack: This is a specific, more efficient method for finding collisions. It exploits the "birthday paradox" statistic, showing that finding any two matching hashes is easier than finding a hash that matches a specific one. This effectively reduces the security strength of a hash function.
+
+Part 5: Malicious Code Indicators
+Malware leaves behind evidence of its activity, which can be detected by security tools or found in logs.
+
+Shellcode: A small piece of code that exploits a vulnerability to gain initial access. Its key indicator is often a new, unexpected network connection to download more tools.
+
+Credential Dumping: The malware attempts to steal password files (like the SAM) or extract credentials from system memory (lsass.exe). A DCSync attack impersonates a domain controller to steal the entire user credential database.
+
+Pivoting/Lateral Movement: The attacker uses the compromised host to run remote commands on other systems (using tools like PsExec or PowerShell). Indicators include anomalous account behavior, new firewall rules, or newly created user accounts.
+
+Persistence: The malware installs a mechanism to restart itself after a reboot. Indicators include unauthorized changes to registry AutoRun keys, scheduled tasks, or WMI event subscriptions.
